@@ -7,22 +7,21 @@ using System.Collections.Generic;
 
 namespace Challenge.RealEtates.Services
 {
-    public class ZapService : IZapService
+    public class RealEstateService : IRealEstateService
     {
-        private readonly IZapRepository _zapRepository;
-        public ZapService(IZapRepository zapRepository)
+        private readonly IRealEstateRepository _zapRepository;
+        public RealEstateService(IRealEstateRepository zapRepository)
         {
             _zapRepository = zapRepository;
+        }
+
+        public void AddRange(IEnumerable<RealEstate> realEstates)
+        {
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)
         {
             return _zapRepository.GetAllPaged(pagedParams, filter);
-        }
-
-        public bool LoadSource()
-        {
-            return _zapRepository.LoadSource();
         }
     }
 }

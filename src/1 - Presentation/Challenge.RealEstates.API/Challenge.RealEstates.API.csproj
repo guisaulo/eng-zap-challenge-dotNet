@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\3 - Domain\Challenge.RealEtates.Core\Challenge.RealEtates.Core.csproj" />
     <ProjectReference Include="..\..\3 - Domain\Challenge.RealEtates.Services\Challenge.RealEtates.Services.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\Challenge.RealStates.Infrastructure\Challenge.RealStates.Infrastructure.csproj" />
+    <ProjectReference Include="..\Challenge.RealEstates.Gateways\Challenge.RealEstates.Gateways.csproj" />
   </ItemGroup>
 
 </Project>

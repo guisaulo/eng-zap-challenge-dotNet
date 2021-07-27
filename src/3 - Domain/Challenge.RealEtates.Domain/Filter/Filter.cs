@@ -2,6 +2,7 @@
 {
     public class Filter
     {
+        public string Source { get; set; }
         public string UsableAreas { get; set; }
         public string ParkingSpaces { get; set; }
         public string City { get; set; }

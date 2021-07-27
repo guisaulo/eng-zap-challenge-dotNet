@@ -30,13 +30,13 @@ namespace Challenge.RealEstates.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<DataInMemory>(Configuration);
-
-            ConfigureAutoMapper(services);            
+            ConfigureAutoMapper(services);
+            services.AddDataInMemory();
             services.AddRepositories();
             services.AddServices();
             services.AddApplicationServices();
             services.AddControllers();
+            services.AddGateways();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge.RealEstates.API", Version = "v1" });

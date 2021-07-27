@@ -1,9 +1,9 @@
-﻿using Challenge.RealStates.Infrastructure.Data.Interfaces;
+﻿using Challenge.RealStates.Infrastructure.Data;
 using System.Collections;
 
-namespace Challenge.RealStates.Infrastructure.Data
+namespace Challenge.RealStates.Infrastructure.Data.Interfaces
 {
-    public class DataInMemory : IDataInMemory
+    public interface IDataInMemory
     {
         public Hashtable Data { get; set; }
         public DataSet Zap { get; set; }

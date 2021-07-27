@@ -4,9 +4,9 @@ using Challenge.RealEtates.Domain.PagedParam;
 
 namespace Challenge.RealEtates.Core.Interfaces.Repositories
 {
-    public interface IZapRepository
+    public interface IRealEstateRepository
     {
-        bool LoadSource();
+        void Add(RealEstate realEstate); 
         PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter);
     }
 }

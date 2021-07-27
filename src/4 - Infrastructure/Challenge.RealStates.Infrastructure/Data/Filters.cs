@@ -2,7 +2,7 @@
 
 namespace Challenge.RealStates.Infrastructure.Data
 {
-    public class DataFilter
+    public class Filters
     {
         public Hashtable UsableAreas { get; set; }
 
