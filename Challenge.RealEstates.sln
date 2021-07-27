@@ -9,23 +9,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D39785BB-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{5343D038-D262-4947-A6C3-0F8FE7FBB1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.API", "src\1 - Presentation\Challenge.RealEstates.API\Challenge.RealEstates.API.csproj", "{A5C6D90A-59D6-45A8-8A47-DAA5D23E2FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.API", "src\1 - Presentation\Challenge.RealEstates.API\Challenge.RealEstates.API.csproj", "{A5C6D90A-59D6-45A8-8A47-DAA5D23E2FDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{B39BE368-466E-4B75-8ED9-F544C08AEBC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Application", "src\2 - Application\Challenge.RealEstates.Application\Challenge.RealEstates.Application.csproj", "{2285E897-1E0B-45C4-AF40-78C8C8B431B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Application", "src\2 - Application\Challenge.RealEstates.Application\Challenge.RealEstates.Application.csproj", "{2285E897-1E0B-45C4-AF40-78C8C8B431B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{7645FE32-F5DF-4417-9F84-A04F6AB70192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEtates.Domain", "src\3 - Domain\Challenge.RealEtates.Domain\Challenge.RealEtates.Domain.csproj", "{7C5F969C-BDCC-436F-A69D-67545CC46C84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEtates.Domain", "src\3 - Domain\Challenge.RealEtates.Domain\Challenge.RealEtates.Domain.csproj", "{7C5F969C-BDCC-436F-A69D-67545CC46C84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEtates.Core", "src\3 - Domain\Challenge.RealEtates.Core\Challenge.RealEtates.Core.csproj", "{B7614BAF-1D1D-4199-AA4B-144AB29EA791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEtates.Core", "src\3 - Domain\Challenge.RealEtates.Core\Challenge.RealEtates.Core.csproj", "{B7614BAF-1D1D-4199-AA4B-144AB29EA791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEtates.Services", "src\3 - Domain\Challenge.RealEtates.Services\Challenge.RealEtates.Services.csproj", "{96DE7EB0-7EF9-4676-8A5F-23CE3990ADC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEtates.Services", "src\3 - Domain\Challenge.RealEtates.Services\Challenge.RealEtates.Services.csproj", "{96DE7EB0-7EF9-4676-8A5F-23CE3990ADC2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{01302CCF-BDAC-42C6-9A24-8A07C01C4AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealStates.Infrastructure", "src\4 - Infrastructure\Challenge.RealStates.Infrastructure\Challenge.RealStates.Infrastructure.csproj", "{92C4D43F-FA84-4CCC-86E3-E30815BEB81F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealStates.Infrastructure", "src\4 - Infrastructure\Challenge.RealStates.Infrastructure\Challenge.RealStates.Infrastructure.csproj", "{92C4D43F-FA84-4CCC-86E3-E30815BEB81F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{452C0AEC-5946-4717-B75E-CC0D6FD2D875}"
 EndProject
@@ -35,13 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastruture", "4 - Infrastruture", "{7EFE8BBF-888A-4E57-AAAF-7CA874095E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.API.UnitTest", "test\1 - Presentation\Challenge.RealEstates.API.UnitTest\Challenge.RealEstates.API.UnitTest.csproj", "{A18CA078-526D-4403-946E-F52BA317D6EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.API.UnitTest", "test\1 - Presentation\Challenge.RealEstates.API.UnitTest\Challenge.RealEstates.API.UnitTest.csproj", "{A18CA078-526D-4403-946E-F52BA317D6EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Application.UnitTest", "test\2 - Application\Challenge.RealEstates.Application.UnitTest\Challenge.RealEstates.Application.UnitTest.csproj", "{2552D277-F43C-4590-B212-04BF20C074B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Application.UnitTest", "test\2 - Application\Challenge.RealEstates.Application.UnitTest\Challenge.RealEstates.Application.UnitTest.csproj", "{2552D277-F43C-4590-B212-04BF20C074B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Domain.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.UnitTest\Challenge.RealEstates.Domain.UnitTest.csproj", "{CBB37DF4-8E86-4F3C-AB2A-B35ADB0F97EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.UnitTest\Challenge.RealEstates.Domain.UnitTest.csproj", "{CBB37DF4-8E86-4F3C-AB2A-B35ADB0F97EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Infrastruture.UnitTest", "test\4 - Infrastructure\Challenge.RealEstates.Infrastruture.UnitTest\Challenge.RealEstates.Infrastruture.UnitTest.csproj", "{7E209278-CBC4-4961-8373-62AE6B14C40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Infrastruture.UnitTest", "test\4 - Infrastructure\Challenge.RealEstates.Infrastruture.UnitTest\Challenge.RealEstates.Infrastruture.UnitTest.csproj", "{7E209278-CBC4-4961-8373-62AE6B14C40E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
