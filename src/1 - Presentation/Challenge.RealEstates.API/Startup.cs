@@ -1,20 +1,15 @@
 using AutoMapper;
 using Challenge.RealEstates.API.Extensions;
 using Challenge.RealEstates.Application.Mappers;
-using Challenge.RealStates.Infrastructure.Data;
+using Challenge.RealEtates.Domain.Validators;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Challenge.RealEstates.API
 {
@@ -41,6 +36,8 @@ namespace Challenge.RealEstates.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge.RealEstates.API", Version = "v1" });
             });
+            services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
+            services.AddLogging(logLevel: LogLevel.Debug);
         }
 
         private static void ConfigureAutoMapper(IServiceCollection services)

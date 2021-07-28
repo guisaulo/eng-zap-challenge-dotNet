@@ -20,8 +20,8 @@ namespace Challenge.RealEstates.API.Controllers
             _realStateGateway = realEstateGateway;
         }
 
-        [HttpPost("LoadSource")]
-        public bool LoadSource(string sourceURL)
+        [HttpPost("AddFromSourceURL")]
+        public bool AddFromSourceURL(string sourceURL)
         {
             var realEstates = _realStateGateway.GetRealEstatesFromSourceURL(sourceURL);
             _realEstateApplicationService.AddRange(realEstates);
@@ -31,14 +31,14 @@ namespace Challenge.RealEstates.API.Controllers
         // GET: api/<ZapController>
 
         [HttpGet("Zap")]
-        public PagedResponseDTO<RealEstateDTO> Zap([FromQuery] QueryParamsDTO queryParam)
+        public PagedResponseDTO<RealEstateDTO> GetAllZap([FromQuery] QueryParamsDTO queryParam)
         {
             queryParam.Source = "ZAP";
             return _realEstateApplicationService.GetAllPaged(queryParam);
         }
 
         [HttpGet("VivaReal")]
-        public PagedResponseDTO<RealEstateDTO> VivaReal([FromQuery] QueryParamsDTO queryParam)
+        public PagedResponseDTO<RealEstateDTO> GetAllVivaReal([FromQuery] QueryParamsDTO queryParam)
         {
             queryParam.Source = "VIVAREAL";
             return _realEstateApplicationService.GetAllPaged(queryParam);

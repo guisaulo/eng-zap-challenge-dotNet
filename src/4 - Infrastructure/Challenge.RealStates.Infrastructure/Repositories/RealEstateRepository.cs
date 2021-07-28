@@ -4,6 +4,7 @@ using Challenge.RealEtates.Domain.Filter;
 using Challenge.RealEtates.Domain.PagedParam;
 using Challenge.RealStates.Infrastructure.Data.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Challenge.RealStates.Infrastructure.Repositories
 {
@@ -16,39 +17,25 @@ namespace Challenge.RealStates.Infrastructure.Repositories
             _dataInMemory = dataInMemory;
         }
 
-        public void Add(RealEstate realEstate)
+        public void AddZapRealEstate(RealEstate realEstate)
         {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddVivaRealEstate(RealEstate realEstate)
+        {
+            throw new System.NotImplementedException();
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)
         {
-            //var teste = _dataInMemory;
-
-            //var dataIdsFilter = new List<string>();
-            //if (filter.BusinessType != null)
-            //{
-            //    dataIdsFilter = _dataInMemory.Value.Zap.Filters.BusinessType.Values.OfType<string>().Where(k => k.Equals(filter.BusinessType)).ToList();
-            //}
-
-            //var dataList = new List<RealEstate>();
-
-            //foreach (DictionaryEntry data in _dataInMemory.Value.Zap.Data)
-            //{
-            //    if (dataIdsFilter.Contains(data.Key))
-            //        dataList.Add((RealEstate)data.Value);
-            //}
-
-            //var totalCount = dataList.Count();
-            //dataList = dataList.Skip(pagedParams.PageNumber * pagedParams.PageSize).Take(pagedParams.PageSize).ToList();
-
-            //return new PagedResponse<RealEstate>
-            //{
-            //    PageNumber = pagedParams.PageNumber,
-            //    PageSize = pagedParams.PageSize,
-            //    TotalCount = dataList.Count(),
-            //    Listings = dataList
-            //};
-            return null;
+            return new PagedResponse<RealEstate>
+            {
+                PageNumber = pagedParams.PageNumber,
+                PageSize = pagedParams.PageSize,
+                TotalCount = GetListRealEstateFake().ToList().Count(),
+                Listings = GetListRealEstateFake()
+            };
         }
 
         private static List<RealEstate> GetListRealEstateFake() =>
@@ -106,31 +93,6 @@ namespace Challenge.RealStates.Infrastructure.Repositories
             };
         }
 
-        //public bool LoadSource()
-        //{
 
-        //    //_dataInMemory.Number = 1;
-
-        //    //_dataInMemory.Value.InstantiateDataInMemory();
-
-        //    //_dataInMemory.Value.Zap.Data.Add("1", GetRealEstateFake(id: "1", businessType: "RENT"));
-        //    //_dataInMemory.Value.Zap.Data.Add("2", GetRealEstateFake(id: "2", businessType: "RENT"));
-        //    //_dataInMemory.Value.Zap.Data.Add("3", GetRealEstateFake(id: "3", businessType: "RENT"));
-        //    //_dataInMemory.Value.Zap.Data.Add("4", GetRealEstateFake(id: "4", businessType: "RENT"));
-        //    //_dataInMemory.Value.Zap.Data.Add("5", GetRealEstateFake(id: "5", businessType: "SALE"));
-        //    //_dataInMemory.Value.Zap.Data.Add("6", GetRealEstateFake(id: "6", businessType: "SALE"));
-        //    //_dataInMemory.Value.Zap.Data.Add("7", GetRealEstateFake(id: "7", businessType: "SALE"));
-        //    //_dataInMemory.Value.Zap.Data.Add("8", GetRealEstateFake(id: "8", businessType: "SALE"));
-        //    //_dataInMemory.Value.Zap.Data.Add("9", GetRealEstateFake(id: "9", businessType: "SALE"));
-        //    //_dataInMemory.Value.Zap.Data.Add("10", GetRealEstateFake(id: "10", businessType: "SALE"));
-
-        //    //_dataInMemory.Value.Zap.Filters.BusinessType = new Hashtable
-        //    //{
-        //    //    { "RENT", new List<string> { "1", "2", "3", "4" } },
-        //    //    { "SALE", new List<string> { "5", "6", "7", "8", "9", "10" } }
-        //    //};
-
-        //    return true;
-        //}
     }
 }

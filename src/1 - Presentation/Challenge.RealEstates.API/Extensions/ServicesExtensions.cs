@@ -11,6 +11,8 @@ using Challenge.RealStates.Infrastructure.Data.Interfaces;
 using Challenge.RealStates.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Challenge.RealEstates.API.Extensions
 {
@@ -39,6 +41,20 @@ namespace Challenge.RealEstates.API.Extensions
         public static void AddGateways(this IServiceCollection services)
         {
             services.TryAddScoped<IRealEstateGateway, RealEstateGateway>();
+        }
+
+        public static void AddLogging(this IServiceCollection services, LogLevel logLevel)
+        {
+            var serilogLogger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .Enrich.FromLogContext()
+            .CreateLogger();
+
+            services.AddLogging(builder =>
+            {
+                builder.SetMinimumLevel(logLevel);
+                builder.AddSerilog(logger: serilogLogger, dispose: true);
+            });
         }
     }
 }
