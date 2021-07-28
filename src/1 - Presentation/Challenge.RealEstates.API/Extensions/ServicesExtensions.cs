@@ -26,6 +26,7 @@ namespace Challenge.RealEstates.API.Extensions
         public static void AddServices(this IServiceCollection services)
         {
             services.TryAddScoped<IRealEstateService, RealEstateService>();
+            services.TryAddScoped<IRealEstateValidationService, RealEstateValidationService>();
         }
 
         public static void AddRepositories(this IServiceCollection services)

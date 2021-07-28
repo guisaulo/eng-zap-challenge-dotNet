@@ -19,12 +19,10 @@ namespace Challenge.RealStates.Infrastructure.Repositories
 
         public void AddZapRealEstate(RealEstate realEstate)
         {
-            throw new System.NotImplementedException();
         }
 
         public void AddVivaRealEstate(RealEstate realEstate)
         {
-            throw new System.NotImplementedException();
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)

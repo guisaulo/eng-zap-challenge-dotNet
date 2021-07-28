@@ -3,60 +3,63 @@ using Challenge.RealEtates.Core.Interfaces.Services;
 using Challenge.RealEtates.Domain.Entities;
 using Challenge.RealEtates.Domain.Filter;
 using Challenge.RealEtates.Domain.PagedParam;
-using Challenge.RealEtates.Services.Properties;
-using FluentValidation;
-using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using Challenge.RealEtates.Domain.DomainResponse;
 
 namespace Challenge.RealEtates.Services
 {
     public class RealEstateService : IRealEstateService
     {
-        private readonly ILogger<RealEstateService> _logger;
-        private readonly IValidator<RealEstate> _validator;
+        private readonly IRealEstateValidationService _realEstateValidationService;
         private readonly IRealEstateRepository _realEstateRepository;
-        public RealEstateService(ILogger<RealEstateService> logger, IValidator<RealEstate> validator, IRealEstateRepository realEstateRepository)
+        public RealEstateService(IRealEstateValidationService realEstateValidationService, IRealEstateRepository realEstateRepository)
         {
-            _logger = logger;
-            _validator = validator;
+            _realEstateValidationService = realEstateValidationService;
             _realEstateRepository = realEstateRepository;
         }
 
-        public void AddRange(IEnumerable<RealEstate> realEstates)
-        {            
+        public AddRangeResponse AddRange(IEnumerable<RealEstate> realEstates)
+        {
+            var domainResponse = InicializeDomainResponse();
+
             foreach (var realEstate in realEstates)
             {
-                if (ValidateRealEstate(realEstate))
+                if (_realEstateValidationService.IsRealEstateInputValid(realEstate))
                 {
-                    //AddDataZap(realEstate);
-                    //AddDataViva(realEstate);
+                    AddDataZap(realEstate, domainResponse);
+                    AddDataViva(realEstate, domainResponse);
                 }
+                else
+                    domainResponse.InvalidInputIds.Add(realEstate.Id);
             }
+
+            return domainResponse;
         }
 
-        private void AddDataViva(RealEstate realEstate)
+        private static AddRangeResponse InicializeDomainResponse()
         {
-            //ImplementaRegraDeNegócio
-            _realEstateRepository.AddZapRealEstate(realEstate);
-        }
-
-        private void AddDataZap(RealEstate realEstate)
-        {
-            //ImplementaRegraDeNegócio
-            _realEstateRepository.AddVivaRealEstate(realEstate);
-        }
-
-        private bool ValidateRealEstate(RealEstate realEstate)
-        {
-            var result = _validator.Validate(realEstate);
-            if (!result.IsValid)
+            return new AddRangeResponse
             {
-                foreach (var failure in result.Errors)                
-                    _logger.LogError(string.Format(Resources.ValidationError, realEstate.Id, failure.PropertyName, failure.ErrorMessage));
-                
-                return false;
-            }
-            return true;
+                InvalidInputIds = new List<string>(),
+                ZapIllegibleIds = new List<string>(),
+                VivaRealIneligibleIds = new List<string>()
+            };
+        }
+
+        private void AddDataZap(RealEstate realEstate, AddRangeResponse domainResponse)
+        {
+            if (_realEstateValidationService.IsEligibleToZapPortal(realEstate))
+                _realEstateRepository.AddVivaRealEstate(realEstate);
+            else
+                domainResponse.ZapIllegibleIds.Add(realEstate.Id);
+        }
+
+        private void AddDataViva(RealEstate realEstate, AddRangeResponse domainResponse)
+        {
+            if (_realEstateValidationService.IsEligibleToVivaRealPortal(realEstate))
+                _realEstateRepository.AddZapRealEstate(realEstate);
+            else
+                domainResponse.VivaRealIneligibleIds.Add(realEstate.Id);
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)

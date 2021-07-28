@@ -9,6 +9,6 @@ namespace Challenge.RealEstates.Application.Interfaces
     public interface IRealEstateApplicationService
     {
         PagedResponseDTO<RealEstateDTO> GetAllPaged(QueryParamsDTO queryParam);
-        void AddRange(IEnumerable<RealEstate> realEstates);
+        AddRangeResponseDto AddRange(IEnumerable<RealEstate> realEstates);
     }
 }

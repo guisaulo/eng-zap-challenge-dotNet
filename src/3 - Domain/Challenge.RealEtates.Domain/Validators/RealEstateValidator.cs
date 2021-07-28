@@ -8,7 +8,7 @@ namespace Challenge.RealEtates.Domain.Validators
         public RealEstateValidator()
         {
             RuleFor(m => m.Id).NotEmpty().NotNull();
-            RuleFor(m => m.UsableAreas).NotNull().NotEqual(0).GreaterThan(0);
+            RuleFor(m => m.UsableAreas).NotNull();
             RuleFor(m => m.ListingStatus).NotEmpty().NotNull();
             RuleFor(m => m.Bathrooms).NotNull();
             RuleFor(m => m.Bedrooms).NotNull();

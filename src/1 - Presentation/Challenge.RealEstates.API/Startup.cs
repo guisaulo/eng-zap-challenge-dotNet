@@ -32,12 +32,12 @@ namespace Challenge.RealEstates.API
             services.AddApplicationServices();
             services.AddControllers();
             services.AddGateways();
+            services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
+            services.AddLogging(logLevel: LogLevel.Debug);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge.RealEstates.API", Version = "v1" });
             });
-            services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
-            services.AddLogging(logLevel: LogLevel.Debug);
         }
 
         private static void ConfigureAutoMapper(IServiceCollection services)

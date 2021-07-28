@@ -17,15 +17,6 @@ namespace Challenge.RealEtates.Domain.Validators
                         context.AddFailure($"{x} is not a valid number or less than 0");
                     }
                 });
-            RuleFor(m => m.MonthlyCondoFee)
-                .NotNull()
-                .Custom((x, context) =>
-                {
-                    if ((!(long.TryParse(x, out long value)) || value < 0))
-                    {
-                        context.AddFailure($"{x} is not a valid number or less than 0");
-                    }
-                });
         }
     }
 }

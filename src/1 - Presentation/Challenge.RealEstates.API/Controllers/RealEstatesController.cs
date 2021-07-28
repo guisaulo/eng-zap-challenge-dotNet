@@ -21,11 +21,11 @@ namespace Challenge.RealEstates.API.Controllers
         }
 
         [HttpPost("AddFromSourceURL")]
-        public bool AddFromSourceURL(string sourceURL)
+        public AddRangeResponseDto AddFromSourceURL(string sourceURL)
         {
             var realEstates = _realStateGateway.GetRealEstatesFromSourceURL(sourceURL);
-            _realEstateApplicationService.AddRange(realEstates);
-            return true;
+            var result = _realEstateApplicationService.AddRange(realEstates);
+            return result;
         }
 
         // GET: api/<ZapController>

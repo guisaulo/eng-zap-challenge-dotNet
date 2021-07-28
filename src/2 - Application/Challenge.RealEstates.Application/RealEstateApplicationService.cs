@@ -9,6 +9,7 @@ using Challenge.RealEtates.Domain.Filter;
 using Challenge.RealEtates.Domain.PagedParam;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Challenge.RealEstates.Application
 {
@@ -22,9 +23,19 @@ namespace Challenge.RealEstates.Application
             _mapper = mapper;
         }
 
-        public void AddRange(IEnumerable<RealEstate> realEstates)
+        public AddRangeResponseDto AddRange(IEnumerable<RealEstate> realEstates)
         {
-            _realEstateService.AddRange(realEstates);
+            var domainResult =_realEstateService.AddRange(realEstates);
+            return new AddRangeResponseDto
+            {
+                DateAddRangeCreate = DateTime.Now.ToString(),
+                CountInvalidInputIds = domainResult.InvalidInputIds.ToList().Count(),
+                CountZapIllegibleIds = domainResult.ZapIllegibleIds.ToList().Count(),
+                CountVivaRealIneligibleIds = domainResult.VivaRealIneligibleIds.ToList().Count(),
+                InvalidInputIds = domainResult.InvalidInputIds,
+                ZapIllegibleIds = domainResult.ZapIllegibleIds,
+                VivaRealIneligibleIds = domainResult.VivaRealIneligibleIds
+            };
         }
 
         public PagedResponseDTO<RealEstateDTO> GetAllPaged(QueryParamsDTO param)
