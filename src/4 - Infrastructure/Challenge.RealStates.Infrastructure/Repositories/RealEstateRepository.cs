@@ -3,6 +3,7 @@ using Challenge.RealEtates.Domain.Entities;
 using Challenge.RealEtates.Domain.Filter;
 using Challenge.RealEtates.Domain.PagedParam;
 using Challenge.RealStates.Infrastructure.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,10 +20,60 @@ namespace Challenge.RealStates.Infrastructure.Repositories
 
         public void AddZapRealEstate(RealEstate realEstate)
         {
+            AddRealEstateInData(realEstate);
+            CreateFilterBusinessType(realEstate);
+            _dataInMemory.ZapIds.Add(realEstate.Id);
         }
 
         public void AddVivaRealEstate(RealEstate realEstate)
         {
+            AddRealEstateInData(realEstate);
+            CreateFilterBusinessType(realEstate);
+            _dataInMemory.VivaRealIds.Add(realEstate.Id);
+        }
+
+        private void CreateFilterBusinessType(RealEstate realEstate)
+        {
+            if (_dataInMemory.Filters.UsableAreas.ContainsKey(realEstate.UsableAreas))
+                _dataInMemory.Filters.UsableAreas[realEstate.UsableAreas].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.UsableAreas.Add(realEstate.UsableAreas, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.ParkingSpaces.ContainsKey(realEstate.ParkingSpaces))
+                _dataInMemory.Filters.ParkingSpaces[realEstate.ParkingSpaces].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.ParkingSpaces.Add(realEstate.ParkingSpaces, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.City.ContainsKey(realEstate.Address.City))
+                _dataInMemory.Filters.City[realEstate.Address.City].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.City.Add(realEstate.Address.City, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.Bathrooms.ContainsKey(realEstate.Bathrooms))
+                _dataInMemory.Filters.Bathrooms[realEstate.Bathrooms].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.Bathrooms.Add(realEstate.Bathrooms, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.Bedrooms.ContainsKey(realEstate.Bedrooms))
+                _dataInMemory.Filters.Bedrooms[realEstate.Bedrooms].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.Bedrooms.Add(realEstate.Bedrooms, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.BusinessType.ContainsKey(realEstate.PricingInfos.BusinessType))
+                _dataInMemory.Filters.BusinessType[realEstate.PricingInfos.BusinessType].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.BusinessType.Add(realEstate.PricingInfos.BusinessType, new HashSet<string> { realEstate.Id });
+
+            if (_dataInMemory.Filters.Price.ContainsKey(realEstate.PricingInfos.Price))
+                _dataInMemory.Filters.Price[realEstate.PricingInfos.Price].Add(realEstate.Id);
+            else
+                _dataInMemory.Filters.Price.Add(realEstate.PricingInfos.Price, new HashSet<string> { realEstate.Id });
+        }
+
+        private void AddRealEstateInData(RealEstate realEstate)
+        {
+            if(!_dataInMemory.Data.ContainsKey(realEstate.Id))
+                _dataInMemory.Data.Add(realEstate.Id, realEstate);
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)

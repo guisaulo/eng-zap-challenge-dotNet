@@ -1,22 +1,32 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace Challenge.RealStates.Infrastructure.Data
 {
     public class Filters
     {
-        public Hashtable UsableAreas { get; set; }
+        public Dictionary<int, HashSet<string>> UsableAreas { get; set; }
 
-        public Hashtable ParkingSpaces { get; set; }
+        public Dictionary<int, HashSet<string>> ParkingSpaces { get; set; }
 
-        public Hashtable City { get; set; }
+        public Dictionary<string, HashSet<string>> City { get; set; }
 
-        public Hashtable Bathrooms { get; set; }
+        public Dictionary<int, HashSet<string>> Bathrooms { get; set; }
 
-        public Hashtable Bedrooms { get; set; }
+        public Dictionary<int, HashSet<string>> Bedrooms { get; set; }
 
-        public Hashtable BusinessType { get; set; }
+        public Dictionary<string, HashSet<string>> BusinessType { get; set; }
 
-        public Hashtable Price { get; set; }
+        public Dictionary<string, HashSet<string>> Price { get; set; }
 
+        public Filters()
+        {
+            this.UsableAreas = new Dictionary<int, HashSet<string>>();
+            this.ParkingSpaces = new Dictionary<int, HashSet<string>>();
+            this.City = new Dictionary<string, HashSet<string>>();
+            this.Bathrooms = new Dictionary<int, HashSet<string>>();
+            this.Bedrooms = new Dictionary<int, HashSet<string>>();
+            this.BusinessType = new Dictionary<string, HashSet<string>>();
+            this.Price = new Dictionary<string, HashSet<string>>();
+        }
     }
 }
