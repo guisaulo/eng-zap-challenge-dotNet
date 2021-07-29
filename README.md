@@ -4,8 +4,6 @@
 
 Kanban: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 ## Solução do problema
 Dizer as principais decisões do projeto
 ## Requisitos
