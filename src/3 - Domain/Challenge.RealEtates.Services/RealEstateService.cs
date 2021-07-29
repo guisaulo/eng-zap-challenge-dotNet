@@ -62,7 +62,7 @@ namespace Challenge.RealEtates.Services
                 domainResponse.VivaRealIneligibleIds.Add(realEstate.Id);
         }
 
-        public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)
+        public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filter)
         {
             return _realEstateRepository.GetAllPaged(pagedParams, filter);
         }

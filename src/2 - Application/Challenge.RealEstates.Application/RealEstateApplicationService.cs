@@ -51,17 +51,15 @@ namespace Challenge.RealEstates.Application
                 PageSize = queryParam.PageSize
             };
 
-        private static Filter GetFilter(QueryParamsDTO param) =>
+        private static Filters GetFilter(QueryParamsDTO param) =>
             new()
             {
                 Source = param.Source,
-                UsableAreas = param.UsableAreas,
-                ParkingSpaces = param.ParkingSpaces,
                 City = param.City,
+                BusinessType = param.BusinessType,
                 Bathrooms = param.Bathrooms,
                 Bedrooms = param.Bedrooms,
-                BusinessType = param.BusinessType,
-                Price = param.Price
+                ParkingSpaces = param.ParkingSpaces
             };
 
     }

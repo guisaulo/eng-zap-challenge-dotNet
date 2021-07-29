@@ -3,7 +3,6 @@ using Challenge.RealEtates.Domain.Entities;
 using Challenge.RealEtates.Domain.Filter;
 using Challenge.RealEtates.Domain.PagedParam;
 using Challenge.RealStates.Infrastructure.Data.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,53 +20,41 @@ namespace Challenge.RealStates.Infrastructure.Repositories
         public void AddZapRealEstate(RealEstate realEstate)
         {
             AddRealEstateInData(realEstate);
-            CreateFilterBusinessType(realEstate);
+            AddFilters(realEstate);
             _dataInMemory.ZapIds.Add(realEstate.Id);
         }
 
         public void AddVivaRealEstate(RealEstate realEstate)
         {
             AddRealEstateInData(realEstate);
-            CreateFilterBusinessType(realEstate);
+            AddFilters(realEstate);
             _dataInMemory.VivaRealIds.Add(realEstate.Id);
         }
 
-        private void CreateFilterBusinessType(RealEstate realEstate)
+        private void AddFilters(RealEstate realEstate)
         {
-            if (_dataInMemory.Filters.UsableAreas.ContainsKey(realEstate.UsableAreas))
-                _dataInMemory.Filters.UsableAreas[realEstate.UsableAreas].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.UsableAreas.Add(realEstate.UsableAreas, new HashSet<string> { realEstate.Id });
+            AddFilter(nameof(realEstate.Address.City), realEstate.Address.City, realEstate.Id);
+            AddFilter(nameof(realEstate.PricingInfos.BusinessType), realEstate.PricingInfos.BusinessType, realEstate.Id);
+            AddFilter(nameof(realEstate.Bathrooms), realEstate.Bathrooms.ToString(), realEstate.Id);
+            AddFilter(nameof(realEstate.Bedrooms), realEstate.Bedrooms.ToString(), realEstate.Id);
+            AddFilter(nameof(realEstate.ParkingSpaces), realEstate.ParkingSpaces.ToString(), realEstate.Id);
+        }
 
-            if (_dataInMemory.Filters.ParkingSpaces.ContainsKey(realEstate.ParkingSpaces))
-                _dataInMemory.Filters.ParkingSpaces[realEstate.ParkingSpaces].Add(realEstate.Id);
+        public void AddFilter(string filterName, string filterValue, string realEstateId)
+        {
+            if (_dataInMemory.Filters.ContainsKey(filterName))
+            {
+                var filter = _dataInMemory.Filters[filterName];
+                if (filter.ContainsKey(filterValue))
+                    filter[filterValue].Add(realEstateId);
+                else
+                    filter.Add(filterValue, new HashSet<string> { realEstateId });
+            }
             else
-                _dataInMemory.Filters.ParkingSpaces.Add(realEstate.ParkingSpaces, new HashSet<string> { realEstate.Id });
-
-            if (_dataInMemory.Filters.City.ContainsKey(realEstate.Address.City))
-                _dataInMemory.Filters.City[realEstate.Address.City].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.City.Add(realEstate.Address.City, new HashSet<string> { realEstate.Id });
-
-            if (_dataInMemory.Filters.Bathrooms.ContainsKey(realEstate.Bathrooms))
-                _dataInMemory.Filters.Bathrooms[realEstate.Bathrooms].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.Bathrooms.Add(realEstate.Bathrooms, new HashSet<string> { realEstate.Id });
-
-            if (_dataInMemory.Filters.Bedrooms.ContainsKey(realEstate.Bedrooms))
-                _dataInMemory.Filters.Bedrooms[realEstate.Bedrooms].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.Bedrooms.Add(realEstate.Bedrooms, new HashSet<string> { realEstate.Id });
-
-            if (_dataInMemory.Filters.BusinessType.ContainsKey(realEstate.PricingInfos.BusinessType))
-                _dataInMemory.Filters.BusinessType[realEstate.PricingInfos.BusinessType].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.BusinessType.Add(realEstate.PricingInfos.BusinessType, new HashSet<string> { realEstate.Id });
-
-            if (_dataInMemory.Filters.Price.ContainsKey(realEstate.PricingInfos.Price))
-                _dataInMemory.Filters.Price[realEstate.PricingInfos.Price].Add(realEstate.Id);
-            else
-                _dataInMemory.Filters.Price.Add(realEstate.PricingInfos.Price, new HashSet<string> { realEstate.Id });
+            {
+                _dataInMemory.Filters.Add(filterName, new Dictionary<string, HashSet<string>>());
+                _dataInMemory.Filters[filterName].Add(filterValue, new HashSet<string>() { realEstateId });
+            }
         }
 
         private void AddRealEstateInData(RealEstate realEstate)
@@ -76,72 +63,51 @@ namespace Challenge.RealStates.Infrastructure.Repositories
                 _dataInMemory.Data.Add(realEstate.Id, realEstate);
         }
 
-        public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter)
+        public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filters)
         {
-            return new PagedResponse<RealEstate>
+            var ids = filters.Source == "ZAP" ? _dataInMemory.ZapIds : _dataInMemory.VivaRealIds;
+
+            if (filters != null)
+            {
+                if (!string.IsNullOrEmpty(filters.City))
+                    ids.IntersectWith(GetFilter(nameof(filters.City), filters.City));
+                if (!string.IsNullOrEmpty(filters.BusinessType))
+                    ids.IntersectWith(GetFilter(nameof(filters.BusinessType), filters.BusinessType));
+                if (!string.IsNullOrEmpty(filters.Bathrooms))
+                    ids.IntersectWith(GetFilter(nameof(filters.Bathrooms), filters.Bathrooms));
+                if (!string.IsNullOrEmpty(filters.Bedrooms))
+                    ids.IntersectWith(GetFilter(nameof(filters.Bedrooms), filters.Bedrooms));
+                if (!string.IsNullOrEmpty(filters.ParkingSpaces))
+                    ids.IntersectWith(GetFilter(nameof(filters.ParkingSpaces), filters.ParkingSpaces));
+            }
+
+            return GetPagedResponse(pagedParams, ids);
+        }
+
+        public HashSet<string> GetFilter(string filterName, string filterValue)
+        {
+            var ids = new HashSet<string>();
+
+            var filter = _dataInMemory.Filters[filterName];
+
+            ids = filter[filterValue];
+
+            return ids;
+        }
+
+        private PagedResponse<RealEstate> GetPagedResponse(PagedParams pagedParams, HashSet<string> ids)
+        {
+            var listIds = ids.ToList();
+            var pagedIds = listIds.Skip(pagedParams.PageNumber * pagedParams.PageSize).Take(pagedParams.PageSize).ToList();
+            var listRealEstate = pagedIds.Select(id => (RealEstate)_dataInMemory.Data[id]).ToList();
+
+            return new PagedResponse<RealEstate>()
             {
                 PageNumber = pagedParams.PageNumber,
                 PageSize = pagedParams.PageSize,
-                TotalCount = GetListRealEstateFake().ToList().Count(),
-                Listings = GetListRealEstateFake()
+                TotalCount = listIds.Count,
+                Listings = listRealEstate
             };
         }
-
-        private static List<RealEstate> GetListRealEstateFake() =>
-            new()
-            {
-
-                GetRealEstateFake(id: "1", businessType: "RENT"),
-                GetRealEstateFake(id: "2", businessType: "RENT"),
-                GetRealEstateFake(id: "3", businessType: "SALE"),
-                GetRealEstateFake(id: "4", businessType: "SALE"),
-                GetRealEstateFake(id: "5", businessType: "SALE"),
-            };
-
-        private static RealEstate GetRealEstateFake(string id = "", string businessType = "")
-        {
-            return new RealEstate
-            {
-                UsableAreas = 69,
-                ListingType = "USED",
-                CreatedAt = "2016-11-16T04:14:02Z",
-                ListingStatus = "ACTIVE",
-                Id = id,
-                ParkingSpaces = 1,
-                UpdatedAt = "2016-11-16T04:14:02Z",
-                Owner = false,
-                Images = new List<string> {
-                     "https://resizedimgs.vivareal.com/crop/400x300/vr.images.sp/285805119ab0761500127aebd8ab0e1d.jpg",
-                     "https://resizedimgs.vivareal.com/crop/400x300/vr.images.sp/4af1656b66b9e12efff6ce06f51926f6.jpg",
-                     "https://resizedimgs.vivareal.com/crop/400x300/vr.images.sp/895f0d4ce1e641fd5c3aad48eff83ac8.jpg",
-                     "https://resizedimgs.vivareal.com/crop/400x300/vr.images.sp/e7b5cce2d9aee78867328dfa0a7ba4c6.jpg",
-                     "https://resizedimgs.vivareal.com/crop/400x300/vr.images.sp/d833da4cdf6b25b7acf3ae0710d3286d.jpg"
-                },
-                Address = new Address
-                {
-                    City = "",
-                    Neighborhood = "",
-                    GeoLocation = new GeoLocation
-                    {
-                        Location = new Location
-                        {
-                            Lat = -46.716542,
-                            Lon = -23.502555
-                        }
-                    }
-                },
-                Bathrooms = 2,
-                Bedrooms = 3,
-                PricingInfos = new PricingInfos
-                {
-                    YearlyIptu = "0",
-                    Price = "405000",
-                    BusinessType = businessType,
-                    MonthlyCondoFee = "495",
-                }
-            };
-        }
-
-
     }
 }

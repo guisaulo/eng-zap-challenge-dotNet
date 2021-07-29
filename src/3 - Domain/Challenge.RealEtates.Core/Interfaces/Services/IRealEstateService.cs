@@ -9,6 +9,6 @@ namespace Challenge.RealEtates.Core.Interfaces.Services
     public interface IRealEstateService {
         AddRangeResponse AddRange(IEnumerable<RealEstate> realEstates);
 
-        PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter);
+        PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filter);
     }
 }

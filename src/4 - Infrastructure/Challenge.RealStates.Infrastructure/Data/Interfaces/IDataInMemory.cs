@@ -6,8 +6,8 @@ namespace Challenge.RealStates.Infrastructure.Data.Interfaces
     public interface IDataInMemory
     {
         public Hashtable Data { get; set; }
-        public List<string> ZapIds { get; set; }
-        public List<string> VivaRealIds { get; set; }
-        public Filters Filters { get; set; }
+        public HashSet<string> ZapIds { get; set; }
+        public HashSet<string> VivaRealIds { get; set; }
+        public Dictionary<string, Dictionary<string, HashSet<string>>> Filters { get; set; }
     }
 }

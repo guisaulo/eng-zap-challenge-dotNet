@@ -8,6 +8,6 @@ namespace Challenge.RealEtates.Core.Interfaces.Repositories
     {
         void AddZapRealEstate(RealEstate realEstate);
         void AddVivaRealEstate(RealEstate realEstate);
-        PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filter filter);
+        PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filters);
     }
 }
