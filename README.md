@@ -4,51 +4,66 @@
 
 Kanban: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
 
-Endereço: https://challenge-realestates-api.herokuapp.com/
-
-## Solução do problema
-Dizer as principais decisões do projeto
-## Requisitos
-
-- Organização
-- Manutenibilidade
-- Rastreabilidade
-- Testabilidade
-- Performance
-- Portabilidade
-- Entendimento do problema
-- 
-## Tecnologias
-
-Dillinger uses a number of open source projects to work properly:
-
-- [.NET 5] - Descrição
-- [API REST] - Descrição
+## Decisões técnicas
+## EndPoints
+## Arquitetura
+## Pontos de melhoria
 
 ## Instruções
+Segue abaixo tutorial para rodar a aplicação localmente ou em conteiner Docker.
 
-#### Como rodar o projeto localmente
+#### Pré-requisitos
+- SDK do .NET 5.0.302
+- Docker Desktop for Windows
 
-Install the dependencies and devDependencies and start the server.
+#### Ambiente local
+A aplicação foi desenvolvida no Visual Studio 2019. Porém, é possível interegir com a aplicação executando os comandos abaixo no diretório raiz do projeto:
 
-```sh
-cd dillinger
-npm i
-node app
+- Executar aplicação:
+```
+dotnet run --project "./src/1 - Presentation/Challenge.RealEstates.API/Challenge.RealEstates.API.csproj"
+
+https://localhost:5001/swagger/index.html
+```
+- Executar testes:
+```
+dotnet test
+```
+- Publicar projeto:
+```
+dotnet publish "./src/1 - Presentation/Challenge.RealEstates.API/Challenge.RealEstates.API.csproj" -c Release -o "<diretório>"
+```
+- Executar aplicação publicada:
+```
+dotnet Challenge.RealEstates.API.dll
+
+https://localhost:5001/swagger/index.html
 ```
 
-#### Como rodar os testes
+#### Container Docker
+Para rodar a aplicação em Docker, execute os seguintes comandos no diretório raiz do projeto:
 
-First Tab:
+- Gerar imagem:
+```
+docker build . -t challenge-realestates-api
+```
+- Rodar a aplicação em container:
+```
+docker run -p 8080:80 -e ASPNETCORE_ENVIRONMENT=Development challenge-realestates-api
 
-```sh
-node app
+https://localhost:5001/swagger/index.html
+```
+- Rodar a aplicação em container:
+```
+docker run -p 8080:80 -e ASPNETCORE_ENVIRONMENT=Development challenge-realestates-api
+
+https://localhost:5001/swagger/index.html
 ```
 
-#### Como fazer deploy
+#### Heroku
 
-Second Tab:
-
-```sh
-gulp watch
+A aplicação foi publicada em um serviço de hospedagem gratuita chamada Heroku para fins de testes (a aplicação demora cerca de 1 minuto para "acordar"):
 ```
+https://challenge-realestates-api.herokuapp.com/swagger/index.html
+```
+
