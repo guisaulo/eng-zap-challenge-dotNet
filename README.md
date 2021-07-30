@@ -53,12 +53,6 @@ docker run -p 8080:80 -e ASPNETCORE_ENVIRONMENT=Development challenge-realestate
 
 https://localhost:5001/swagger/index.html
 ```
-- Rodar a aplicação em container:
-```
-docker run -p 8080:80 -e ASPNETCORE_ENVIRONMENT=Development challenge-realestates-api
-
-https://localhost:5001/swagger/index.html
-```
 
 #### Heroku
 
