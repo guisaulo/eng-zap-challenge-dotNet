@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using AutoMapper;
 using Challenge.RealEstates.API.Extensions;
 using Challenge.RealEstates.Application.Mappers;
@@ -15,8 +18,10 @@ namespace Challenge.RealEstates.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _environment;
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            _environment = environment;
             Configuration = configuration;
         }
 
@@ -34,9 +39,26 @@ namespace Challenge.RealEstates.API
             services.AddGateways();
             services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
             services.AddLogging(logLevel: LogLevel.Debug);
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge.RealEstates.API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo()
+                {
+                    Version = "v1",
+                    Title = "Challenge.RealEstates.API",
+                    Description = "Swagger surface",
+                    Contact = new OpenApiContact()
+                    {
+                        Name = "Guilherme Saulo Alves",
+                        Email = "guisaulo@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/guisaulo/")
+                    },
+                    License = new OpenApiLicense()
+                    {
+                        Name = "MIT",
+                        Url = new Uri("https://github.com/guisaulo/eng-zap-challenge-dotNet/blob/main/LICENSE")
+                    },
+
+                });
             });
         }
 
@@ -61,8 +83,6 @@ namespace Challenge.RealEstates.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge.RealEstates.API v1"));
             }
 
             app.UseHttpsRedirection();
@@ -70,6 +90,17 @@ namespace Challenge.RealEstates.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge.RealEstates.API v1");
+                c.OAuthClientId("Swagger");
+                c.OAuthClientSecret("swagger");
+                c.OAuthAppName("Challenge.RealEstates.API v1");
+                c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+            });
 
             app.UseEndpoints(endpoints =>
             {
