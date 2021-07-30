@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>0a5de3f6-eb17-489d-9227-71f70766240c</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
@@ -27,9 +27,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\2 - Application\Challenge.RealEstates.Application\Challenge.RealEstates.Application.csproj" />
-    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEtates.Core\Challenge.RealEtates.Core.csproj" />
-    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEtates.Services\Challenge.RealEtates.Services.csproj" />
-    <ProjectReference Include="..\..\4 - Infrastructure\Challenge.RealStates.Infrastructure\Challenge.RealStates.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEstates.Core\Challenge.RealEstates.Core.csproj" />
+    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEstates.Services\Challenge.RealEstates.Services.csproj" />
+    <ProjectReference Include="..\..\4 - Infrastructure\Challenge.RealEstates.Infrastructure\Challenge.RealEstates.Infrastructure.csproj" />
     <ProjectReference Include="..\Challenge.RealEstates.Gateways\Challenge.RealEstates.Gateways.csproj" />
   </ItemGroup>
 

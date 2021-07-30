@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Challenge.RealEstates.Application.DTOs;
-using Challenge.RealEtates.Domain.Entities;
+using Challenge.RealEstates.Domain.Entities;
 
 namespace Challenge.RealEstates.Application.Mappers
 {

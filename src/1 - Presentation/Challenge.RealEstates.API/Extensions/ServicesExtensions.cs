@@ -4,16 +4,16 @@ using Challenge.RealEstates.Application.Interfaces;
 using Challenge.RealEstates.Application.Mappers;
 using Challenge.RealEstates.Gateways;
 using Challenge.RealEstates.Gateways.Interfaces;
-using Challenge.RealEtates.Core.Interfaces.Repositories;
-using Challenge.RealEtates.Core.Interfaces.Services;
-using Challenge.RealEtates.Services;
-using Challenge.RealStates.Infrastructure.Data;
-using Challenge.RealStates.Infrastructure.Data.Interfaces;
-using Challenge.RealStates.Infrastructure.Repositories;
+using Challenge.RealEstates.Core.Interfaces.Repositories;
+using Challenge.RealEstates.Core.Interfaces.Services;
+using Challenge.RealEstates.Services;
+using Challenge.RealEstates.Infrastructure.Data;
+using Challenge.RealEstates.Infrastructure.Data.Interfaces;
+using Challenge.RealEstates.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Challenge.RealEstates.API.Extensions
+namespace Challenge.RealEstates.Api.Extensions
 {
     public static class ServicesExtensions
     {
@@ -36,6 +36,7 @@ namespace Challenge.RealEstates.API.Extensions
 
             services.TryAddSingleton(mapperConfig.CreateMapper());
         }
+
         public static void AddGateways(this IServiceCollection services)
         {
             services.TryAddScoped<IRealEstateGateway, RealEstateGateway>();

@@ -1,6 +1,4 @@
-﻿using Challenge.RealEstates.API.Command;
-using Challenge.RealEstates.API.Properties;
-using Challenge.RealEstates.Application.DTOs;
+﻿using Challenge.RealEstates.Application.DTOs;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
 using Challenge.RealEstates.Gateways.Interfaces;
@@ -8,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Challenge.RealEstates.Api.Properties;
+using Challenge.RealEstates.Application.Command;
 
-namespace Challenge.RealEstates.API.Controllers
+namespace Challenge.RealEstates.Api.Controllers
 {
     [Route("realestates")]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -35,7 +35,7 @@ namespace Challenge.RealEstates.API.Controllers
             if (!IsValidCommand(command))
                 return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]> { { "error", new[] { Resource.InvalidUrl } } }));
 
-            var realEstatesFromUrl = _realStateGateway.GetRealEstatesFromSourceURL(command.Url);
+            var realEstatesFromUrl = _realStateGateway.GetRealEstatesFromSourceUrl(command.Url);
             var result = _realEstateApplicationService.AddRange(realEstatesFromUrl);
             return Ok(result);
         }
@@ -75,6 +75,5 @@ namespace Challenge.RealEstates.API.Controllers
                 return false;
             }
         }
-
     }
 }

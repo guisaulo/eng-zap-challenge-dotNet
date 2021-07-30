@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Challenge.RealEstates.Application.DTOs;
-using Challenge.RealEtates.Domain.Entities;
+using Challenge.RealEstates.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

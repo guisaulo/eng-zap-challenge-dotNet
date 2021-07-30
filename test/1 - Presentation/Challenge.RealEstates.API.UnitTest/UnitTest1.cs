@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Challenge.RealEstates.API.UnitTest
+namespace Challenge.RealEstates.Api.UnitTest
 {
     public class UnitTest1
     {

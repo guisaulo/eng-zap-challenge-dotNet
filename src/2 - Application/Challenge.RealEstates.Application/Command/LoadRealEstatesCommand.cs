@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Challenge.RealEstates.API.Command
+namespace Challenge.RealEstates.Application.Command
 {
     public class LoadRealEstatesCommand
     {

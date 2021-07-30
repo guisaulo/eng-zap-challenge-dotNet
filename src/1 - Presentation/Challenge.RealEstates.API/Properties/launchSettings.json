@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Challenge.RealEstates.API": {
+    "Challenge.RealEstates.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

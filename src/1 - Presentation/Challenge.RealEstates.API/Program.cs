@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace Challenge.RealEstates.API
+namespace Challenge.RealEstates.Api
 {
     public class Program
     {

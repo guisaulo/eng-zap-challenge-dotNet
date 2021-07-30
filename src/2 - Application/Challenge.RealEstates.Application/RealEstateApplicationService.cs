@@ -2,12 +2,13 @@
 using Challenge.RealEstates.Application.DTOs;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
-using Challenge.RealEtates.Core.Interfaces.Services;
-using Challenge.RealEtates.Domain.Entities;
-using Challenge.RealEtates.Domain.Filter;
-using Challenge.RealEtates.Domain.PagedParam;
+using Challenge.RealEstates.Core.Interfaces.Services;
+using Challenge.RealEstates.Domain.Entities;
+using Challenge.RealEstates.Domain.Filter;
+using Challenge.RealEstates.Domain.PagedParam;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Challenge.RealEstates.Application
@@ -27,10 +28,10 @@ namespace Challenge.RealEstates.Application
             var domainResult =_realEstateService.AddRange(realEstates);
             return new LoadRealEstatesCommandResponse
             {
-                DateAddRangeCreate = DateTime.Now.ToString(),
-                CountInvalidInputIds = domainResult.InvalidInputIds.ToList().Count(),
-                CountZapIllegibleIds = domainResult.ZapIllegibleIds.ToList().Count(),
-                CountVivaRealIneligibleIds = domainResult.VivaRealIneligibleIds.ToList().Count(),
+                LoadDate = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                CountInvalidInputIds = domainResult.InvalidInputIds.ToList().Count,
+                CountZapIllegibleIds = domainResult.ZapIllegibleIds.ToList().Count,
+                CountVivaRealIneligibleIds = domainResult.VivaRealIneligibleIds.ToList().Count,
                 InvalidInputIds = domainResult.InvalidInputIds,
                 ZapIllegibleIds = domainResult.ZapIllegibleIds,
                 VivaRealIneligibleIds = domainResult.VivaRealIneligibleIds

@@ -1,5 +1,5 @@
-using Challenge.RealEstates.API.Extensions;
-using Challenge.RealEtates.Domain.Validators;
+using Challenge.RealEstates.Api.Extensions;
+using Challenge.RealEstates.Domain.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,14 +11,12 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Challenge.RealEstates.API
+namespace Challenge.RealEstates.Api
 {
     public class Startup
     {
-        private readonly IWebHostEnvironment _environment;
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration)
         {
-            _environment = environment;
             Configuration = configuration;
         }
 
@@ -34,7 +32,7 @@ namespace Challenge.RealEstates.API
                 options.SwaggerDoc("v1", new OpenApiInfo()
                 {
                     Version = "v1",
-                    Title = "Challenge.RealEstates.API",
+                    Title = "Challenge.RealEstates.Api",
                     Description = "Swagger surface",
                     Contact = new OpenApiContact()
                     {
@@ -77,10 +75,10 @@ namespace Challenge.RealEstates.API
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge.RealEstates.API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge.RealEstates.Api v1");
                 c.OAuthClientId("Swagger");
                 c.OAuthClientSecret("swagger");
-                c.OAuthAppName("Challenge.RealEstates.API v1");
+                c.OAuthAppName("Challenge.RealEstates.Api v1");
                 c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
             });
 

@@ -1,5 +1,5 @@
 ﻿using Challenge.RealEstates.Gateways.Interfaces;
-using Challenge.RealEtates.Domain.Entities;
+using Challenge.RealEstates.Domain.Entities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
@@ -8,12 +8,12 @@ namespace Challenge.RealEstates.Gateways
 {
     public class RealEstateGateway : IRealEstateGateway
     {
-        public IEnumerable<RealEstate> GetRealEstatesFromSourceURL(string sourceURL)
+        public IEnumerable<RealEstate> GetRealEstatesFromSourceUrl(string url)
         {
-            var json = string.Empty;
+            string json;
             using (var webClient = new WebClient())
             {
-                json = webClient.DownloadString(sourceURL);
+                json = webClient.DownloadString(url);
             }
 
             var realEstates = JsonConvert.DeserializeObject<List<RealEstate>>(json);
