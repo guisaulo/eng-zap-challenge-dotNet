@@ -1,10 +1,9 @@
-﻿namespace Challenge.RealEstates.Application.DTOs.Params
+﻿namespace Challenge.RealEstates.Application.DTOs
 {
-    public class QueryParamsDTO
+    public class RealEstatesSearchDto
     {
-        public string Source { get; set; }
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
         public string City { get; set; }
         public string BusinessType { get; set; }
         public string Bathrooms { get; set; }

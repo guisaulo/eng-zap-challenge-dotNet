@@ -16,13 +16,13 @@ namespace Challenge.RealEstates.Application.Mappers
 
         private void PagedResponseMap()
         {
-            CreateMap<PagedResponseDTO<RealEstateDTO>, PagedResponse<RealEstate>>()
+            CreateMap<PagedParamsDto<RealEstateDTO>, PagedResponse<RealEstate>>()
                 .ForMember(dest => dest.Listings, opt => opt.MapFrom(x => x.Listings));
         }
         
         private void PagedResponseDtoMap()
         {
-            CreateMap<PagedResponse<RealEstate>, PagedResponseDTO<RealEstateDTO>>()
+            CreateMap<PagedResponse<RealEstate>, PagedParamsDto<RealEstateDTO>>()
                 .ForMember(dest => dest.Listings, opt => opt.MapFrom(x => x.Listings));
         }
     }

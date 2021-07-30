@@ -65,7 +65,7 @@ namespace Challenge.RealStates.Infrastructure.Repositories
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filters)
         {
-            var ids = filters.Source == "ZAP" ? _dataInMemory.ZapIds : _dataInMemory.VivaRealIds;
+            var ids = filters.Source == "zap" ? _dataInMemory.ZapIds.ToHashSet() : _dataInMemory.VivaRealIds.ToHashSet();
 
             if (filters != null)
             {
@@ -98,7 +98,8 @@ namespace Challenge.RealStates.Infrastructure.Repositories
         private PagedResponse<RealEstate> GetPagedResponse(PagedParams pagedParams, HashSet<string> ids)
         {
             var listIds = ids.ToList();
-            var pagedIds = listIds.Skip(pagedParams.PageNumber * pagedParams.PageSize).Take(pagedParams.PageSize).ToList();
+            var pageSize = listIds.Count < pagedParams.PageSize ? listIds.Count : pagedParams.PageSize;
+            var pagedIds = listIds.Skip((pagedParams.PageNumber - 1) * pageSize).Take(pageSize).ToList();
             var listRealEstate = pagedIds.Select(id => (RealEstate)_dataInMemory.Data[id]).ToList();
 
             return new PagedResponse<RealEstate>()

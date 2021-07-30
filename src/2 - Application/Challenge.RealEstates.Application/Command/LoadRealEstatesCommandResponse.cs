@@ -2,7 +2,7 @@
 
 namespace Challenge.RealEstates.Application.DTOs.Response
 {
-    public class AddRangeResponseDto
+    public class LoadRealEstatesCommandResponse
     {
         public string DateAddRangeCreate { get; set; }
 

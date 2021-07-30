@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Challenge.RealEstates.Application.DTOs;
-using Challenge.RealEstates.Application.DTOs.Params;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
 using Challenge.RealEtates.Core.Interfaces.Services;
@@ -23,10 +22,10 @@ namespace Challenge.RealEstates.Application
             _mapper = mapper;
         }
 
-        public AddRangeResponseDto AddRange(IEnumerable<RealEstate> realEstates)
+        public LoadRealEstatesCommandResponse AddRange(IEnumerable<RealEstate> realEstates)
         {
             var domainResult =_realEstateService.AddRange(realEstates);
-            return new AddRangeResponseDto
+            return new LoadRealEstatesCommandResponse
             {
                 DateAddRangeCreate = DateTime.Now.ToString(),
                 CountInvalidInputIds = domainResult.InvalidInputIds.ToList().Count(),
@@ -38,23 +37,23 @@ namespace Challenge.RealEstates.Application
             };
         }
 
-        public PagedResponseDTO<RealEstateDTO> GetAllPaged(QueryParamsDTO param)
+        public PagedParamsDto<RealEstateDTO> GetAllPaged(string source, RealEstatesSearchDto search)
         {
-            var response = _realEstateService.GetAllPaged(GetPagedParams(param), GetFilter(param));
-            return _mapper.Map<PagedResponseDTO<RealEstateDTO>>(response);
+            var response = _realEstateService.GetAllPaged(GetPagedParams(search), GetFilter(source, search));
+            return _mapper.Map<PagedParamsDto<RealEstateDTO>>(response);
         }
 
-        private static PagedParams GetPagedParams(QueryParamsDTO queryParam) =>
+        private static PagedParams GetPagedParams(RealEstatesSearchDto queryParam) =>
             new()
             {
                 PageNumber = queryParam.PageNumber,
                 PageSize = queryParam.PageSize
             };
 
-        private static Filters GetFilter(QueryParamsDTO param) =>
+        private static Filters GetFilter(string source, RealEstatesSearchDto param) =>
             new()
             {
-                Source = param.Source,
+                Source = source.ToLower(),
                 City = param.City,
                 BusinessType = param.BusinessType,
                 Bathrooms = param.Bathrooms,

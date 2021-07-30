@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Challenge.RealEstates.Application.DTOs.Response
 {
-    public class PagedResponseDTO<TDTO>
+    public class PagedParamsDto<TDTO>
     {
         public int PageNumber { get; set; }
 

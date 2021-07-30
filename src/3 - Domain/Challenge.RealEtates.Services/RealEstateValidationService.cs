@@ -23,7 +23,7 @@ namespace Challenge.RealEtates.Services
             if (!result.IsValid)
             {
                 foreach (var failure in result.Errors)
-                    _logger.LogError(string.Format(Resources.ValidationError, realEstate.Id, failure.PropertyName, failure.ErrorMessage));
+                    _logger.LogError(string.Format(Resource.ValidationError, realEstate.Id, failure.PropertyName, failure.ErrorMessage));
 
                 return false;
             }

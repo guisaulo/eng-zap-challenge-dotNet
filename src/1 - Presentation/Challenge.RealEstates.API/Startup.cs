@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace Challenge.RealEstates.API
 {
@@ -46,6 +48,10 @@ namespace Challenge.RealEstates.API
                         Url = new Uri("https://github.com/guisaulo/eng-zap-challenge-dotNet/blob/main/LICENSE")
                     }
                 });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
             services.AddApplicationServices();
             services.ConfigureAutoMapper();

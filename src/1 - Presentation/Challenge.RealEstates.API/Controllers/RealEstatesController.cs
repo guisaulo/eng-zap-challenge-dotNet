@@ -1,14 +1,18 @@
-﻿using Challenge.RealEstates.Application.DTOs;
-using Challenge.RealEstates.Application.DTOs.Params;
+﻿using Challenge.RealEstates.API.Command;
+using Challenge.RealEstates.API.Properties;
+using Challenge.RealEstates.Application.DTOs;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
 using Challenge.RealEstates.Gateways.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Challenge.RealEstates.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("realestates")]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     public class RealEstatesController : ControllerBase
     {
         private readonly IRealEstateApplicationService _realEstateApplicationService;
@@ -20,28 +24,56 @@ namespace Challenge.RealEstates.API.Controllers
             _realStateGateway = realEstateGateway;
         }
 
-        [HttpPost("AddFromSourceURL")]
-        public AddRangeResponseDto AddFromSourceURL(string sourceURL)
+        /// <summary>
+        /// Load new real estates into memory from a input url.
+        /// </summary>
+        /// <param name="command"><see cref="LoadRealEstatesCommand"/></param>
+        /// <returns>Load Informations<see cref="LoadRealEstatesCommandResponse"/></returns>
+        [HttpPost("load")]
+        public ActionResult<LoadRealEstatesCommandResponse> Load([FromBody] LoadRealEstatesCommand command)
         {
-            var realEstates = _realStateGateway.GetRealEstatesFromSourceURL(sourceURL);
-            var result = _realEstateApplicationService.AddRange(realEstates);
-            return result;
+            if (!IsValidCommand(command))
+                return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]> { { "error", new[] { Resource.InvalidUrl } } }));
+
+            var realEstatesFromUrl = _realStateGateway.GetRealEstatesFromSourceURL(command.Url);
+            var result = _realEstateApplicationService.AddRange(realEstatesFromUrl);
+            return Ok(result);
         }
 
-        // GET: api/<ZapController>
+        /// <summary>
+        /// Get all real estates by source.
+        /// </summary>
+        /// <returns>List of <see cref="RealEstateDTO"/></returns>
 
-        [HttpGet("Zap")]
-        public PagedResponseDTO<RealEstateDTO> GetAllZap([FromQuery] QueryParamsDTO queryParam)
+        [HttpGet("{source}")]
+        public ActionResult<PagedParamsDto<RealEstateDTO>> GetBySource(string source, [FromQuery] RealEstatesSearchDto search)
         {
-            queryParam.Source = "ZAP";
-            return _realEstateApplicationService.GetAllPaged(queryParam);
+            var result = _realEstateApplicationService.GetAllPaged(source, search);
+            if (!result.Listings.Any())
+                return NotFound();
+            
+            return Ok(result);
         }
 
-        [HttpGet("VivaReal")]
-        public PagedResponseDTO<RealEstateDTO> GetAllVivaReal([FromQuery] QueryParamsDTO queryParam)
+        private static bool IsValidCommand(LoadRealEstatesCommand source)
         {
-            queryParam.Source = "VIVAREAL";
-            return _realEstateApplicationService.GetAllPaged(queryParam);
+            return source != null && IsValidUrl(source.Url);
+        }
+
+        private static bool IsValidUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+                return false;
+
+            try
+            {
+                var uriResult = new Uri(url);
+                return Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
