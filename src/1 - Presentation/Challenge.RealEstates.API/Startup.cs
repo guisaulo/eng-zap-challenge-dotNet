@@ -1,9 +1,4 @@
-using System;
-using System.IO;
-using System.Reflection;
-using AutoMapper;
 using Challenge.RealEstates.API.Extensions;
-using Challenge.RealEstates.Application.Mappers;
 using Challenge.RealEtates.Domain.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace Challenge.RealEstates.API
 {
@@ -30,15 +25,8 @@ namespace Challenge.RealEstates.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureAutoMapper(services);
-            services.AddDataInMemory();
-            services.AddRepositories();
-            services.AddServices();
-            services.AddApplicationServices();
+            services.AddLogging();
             services.AddControllers();
-            services.AddGateways();
-            services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
-            services.AddLogging(logLevel: LogLevel.Debug);
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo()
@@ -56,25 +44,16 @@ namespace Challenge.RealEstates.API
                     {
                         Name = "MIT",
                         Url = new Uri("https://github.com/guisaulo/eng-zap-challenge-dotNet/blob/main/LICENSE")
-                    },
-
+                    }
                 });
             });
-        }
-
-        private static void ConfigureAutoMapper(IServiceCollection services)
-        {
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new LocationProfile());
-                mc.AddProfile(new GeoLocationProfile());
-                mc.AddProfile(new AddressProfile());
-                mc.AddProfile(new PricingInfosProfile());
-                mc.AddProfile(new RealEstateProfile());
-                mc.AddProfile(new PagedResponseProfile());
-            });
-
-            services.AddSingleton(mapperConfig.CreateMapper());
+            services.AddApplicationServices();
+            services.ConfigureAutoMapper();
+            services.AddGateways();
+            services.AddServices();
+            services.AddValidatorsFromAssemblyContaining<RealEstateValidator>();
+            services.AddRepositories();
+            services.AddDataInMemory();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,11 +65,8 @@ namespace Challenge.RealEstates.API
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseSwagger();
             app.UseSwaggerUI(c =>
