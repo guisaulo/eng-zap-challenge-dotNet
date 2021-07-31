@@ -14,9 +14,9 @@ COPY ["src/1 - Presentation/Challenge.RealEstates.Api/Challenge.RealEstates.Api.
 COPY ["src/1 - Presentation/Challenge.RealEstates.Gateways/Challenge.RealEstates.Gateways.csproj", "src/1 - Presentation/Challenge.RealEstates.Gateways/"]
 COPY ["src/3 - Domain/Challenge.RealEstates.Domain/Challenge.RealEstates.Domain.csproj", "src/3 - Domain/Challenge.RealEstates.Domain/"]
 COPY ["src/4 - Infrastructure/Challenge.RealEstates.Infrastructure/Challenge.RealEstates.Infrastructure.csproj", "src/4 - Infrastructure/Challenge.RealEstates.Infrastructure/"]
-COPY ["src/3 - Domain/Challenge.RealEstates.Core/Challenge.RealEstates.Core.csproj", "src/3 - Domain/Challenge.RealEstates.Core/"]
+COPY ["src/3 - Domain/Challenge.RealEstates.Domain.Core/Challenge.RealEstates.Domain.Core.csproj", "src/3 - Domain/Challenge.RealEstates.Domain.Core/"]
+COPY ["src/3 - Domain/Challenge.RealEstates.Domain.Services/Challenge.RealEstates.Domain.Services.csproj", "src/3 - Domain/Challenge.RealEstates.Domain.Services/"]
 COPY ["src/2 - Application/Challenge.RealEstates.Application/Challenge.RealEstates.Application.csproj", "src/2 - Application/Challenge.RealEstates.Application/"]
-COPY ["src/3 - Domain/Challenge.RealEstates.Services/Challenge.RealEstates.Services.csproj", "src/3 - Domain/Challenge.RealEstates.Services/"]
 RUN dotnet restore "src/1 - Presentation/Challenge.RealEstates.Api/Challenge.RealEstates.Api.csproj"
 COPY . .
 WORKDIR "/src/src/1 - Presentation/Challenge.RealEstates.Api"
