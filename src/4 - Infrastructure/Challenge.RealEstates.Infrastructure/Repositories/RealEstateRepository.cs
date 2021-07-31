@@ -48,6 +48,9 @@ namespace Challenge.RealEstates.Infrastructure.Repositories
 
         public void AddFilter(string filterName, string filterValue, string realEstateId)
         {
+            if (string.IsNullOrEmpty(filterValue))
+                return;
+
             if (_dataInMemory.Filters.ContainsKey(filterName))
             {
                 var filter = _dataInMemory.Filters[filterName];
