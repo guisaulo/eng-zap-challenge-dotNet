@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
-
-namespace Challenge.RealEstates.Domain.DomainResponse
+﻿namespace Challenge.RealEstates.Domain.DomainResponse
 {
     public class AddRangeResponse
     {
-        public ICollection<string> InvalidInputIds { get; set; }
-        public ICollection<string> ZapIllegibleIds { get; set; }
-        public ICollection<string> VivaRealIneligibleIds { get; set; }
+        public RealEstatesResponse Input { get; set; }
+        public RealEstatesResponse Zap { get; set; }
+        public RealEstatesResponse VivaReal { get; set; }
+
+        public AddRangeResponse()
+        {
+            this.Input = new RealEstatesResponse();
+            this.Zap = new RealEstatesResponse();
+            this.VivaReal = new RealEstatesResponse();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Domain.Entities;
 using System.Collections.Generic;
+using Challenge.RealEstates.Application.Command;
 
 namespace Challenge.RealEstates.Application.Interfaces
 {

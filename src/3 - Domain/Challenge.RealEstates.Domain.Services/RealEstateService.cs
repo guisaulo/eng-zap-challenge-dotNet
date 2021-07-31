@@ -4,6 +4,7 @@ using Challenge.RealEstates.Domain.Entities;
 using Challenge.RealEstates.Domain.Filter;
 using Challenge.RealEstates.Domain.PagedParam;
 using System.Collections.Generic;
+using System.Linq;
 using Challenge.RealEstates.Domain.DomainResponse;
 
 namespace Challenge.RealEstates.Domain.Services
@@ -20,46 +21,46 @@ namespace Challenge.RealEstates.Domain.Services
 
         public AddRangeResponse AddRange(IEnumerable<RealEstate> realEstates)
         {
-            var domainResponse = InicializeDomainResponse();
+            var domainResponse = new AddRangeResponse();
+
+            if (realEstates == null || !realEstates.Any())
+                return domainResponse;
 
             foreach (var realEstate in realEstates)
             {
                 if (_realEstateValidationService.IsRealEstateInputValid(realEstate))
                 {
+                    domainResponse.Input.ValidIds.Add(realEstate.Id);
                     AddDataZap(realEstate, domainResponse);
                     AddDataViva(realEstate, domainResponse);
                 }
                 else
-                    domainResponse.InvalidInputIds.Add(realEstate.Id);
+                    domainResponse.Input.InvalidIds.Add(realEstate.Id);
             }
 
             return domainResponse;
         }
 
-        private static AddRangeResponse InicializeDomainResponse()
-        {
-            return new AddRangeResponse
-            {
-                InvalidInputIds = new List<string>(),
-                ZapIllegibleIds = new List<string>(),
-                VivaRealIneligibleIds = new List<string>()
-            };
-        }
-
         private void AddDataZap(RealEstate realEstate, AddRangeResponse domainResponse)
         {
             if (_realEstateValidationService.IsEligibleToZapPortal(realEstate))
-                _realEstateRepository.AddVivaRealEstate(realEstate);
+            {
+                domainResponse.Zap.ValidIds.Add(realEstate.Id);
+                _realEstateRepository.AddZapRealEstate(realEstate);
+            }
             else
-                domainResponse.ZapIllegibleIds.Add(realEstate.Id);
+                domainResponse.Zap.InvalidIds.Add(realEstate.Id);
         }
 
         private void AddDataViva(RealEstate realEstate, AddRangeResponse domainResponse)
         {
             if (_realEstateValidationService.IsEligibleToVivaRealPortal(realEstate))
-                _realEstateRepository.AddZapRealEstate(realEstate);
+            {
+                domainResponse.VivaReal.ValidIds.Add(realEstate.Id);
+                _realEstateRepository.AddVivaRealEstate(realEstate);
+            }
             else
-                domainResponse.VivaRealIneligibleIds.Add(realEstate.Id);
+                domainResponse.VivaReal.InvalidIds.Add(realEstate.Id);
         }
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filter)

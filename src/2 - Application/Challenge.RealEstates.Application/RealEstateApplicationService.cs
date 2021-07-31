@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Challenge.RealEstates.Application.Command;
 
 namespace Challenge.RealEstates.Application
 {
@@ -26,17 +27,33 @@ namespace Challenge.RealEstates.Application
         public LoadRealEstatesCommandResponse AddRange(IEnumerable<RealEstate> realEstates)
         {
             var domainResult =_realEstateService.AddRange(realEstates);
-            return new LoadRealEstatesCommandResponse
+            return GetLoadRealEstatesCommandResponseFromDomainResult(domainResult);
+        }
+
+        private static LoadRealEstatesCommandResponse GetLoadRealEstatesCommandResponseFromDomainResult(
+            Domain.DomainResponse.AddRangeResponse domainResult) =>
+            new()
             {
                 LoadDate = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                CountInvalidInputIds = domainResult.InvalidInputIds.ToList().Count,
-                CountZapIllegibleIds = domainResult.ZapIllegibleIds.ToList().Count,
-                CountVivaRealIneligibleIds = domainResult.VivaRealIneligibleIds.ToList().Count,
-                InvalidInputIds = domainResult.InvalidInputIds,
-                ZapIllegibleIds = domainResult.ZapIllegibleIds,
-                VivaRealIneligibleIds = domainResult.VivaRealIneligibleIds
+                Input = new RealEstatesCommandResponse()
+                {
+                    TotalIds = domainResult.Input.ValidIds.Count + domainResult.Input.InvalidIds.Count,
+                    ValidIds = domainResult.Input.ValidIds,
+                    InvalidIds = domainResult.Input.InvalidIds,
+                },
+                Zap = new RealEstatesCommandResponse()
+                {
+                    TotalIds = domainResult.Zap.ValidIds.Count + domainResult.Zap.InvalidIds.Count,
+                    ValidIds = domainResult.Zap.ValidIds,
+                    InvalidIds = domainResult.Zap.InvalidIds,
+                },
+                VivaReal = new RealEstatesCommandResponse()
+                {
+                    TotalIds = domainResult.VivaReal.ValidIds.Count + domainResult.VivaReal.InvalidIds.Count,
+                    ValidIds = domainResult.VivaReal.ValidIds,
+                    InvalidIds = domainResult.VivaReal.InvalidIds,
+                }
             };
-        }
 
         public PagedParamsDto<RealEstateDTO> GetAllPaged(string source, RealEstatesSearchDto search)
         {
