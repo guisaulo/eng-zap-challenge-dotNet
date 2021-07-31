@@ -6,7 +6,7 @@ using Challenge.RealEstates.Domain.PagedParam;
 using System.Collections.Generic;
 using Challenge.RealEstates.Domain.DomainResponse;
 
-namespace Challenge.RealEstates.Services
+namespace Challenge.RealEstates.Domain.Services
 {
     public class RealEstateService : IRealEstateService
     {

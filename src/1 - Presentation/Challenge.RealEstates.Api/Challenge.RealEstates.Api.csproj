@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\2 - Application\Challenge.RealEstates.Application\Challenge.RealEstates.Application.csproj" />
-    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEstates.Services\Challenge.RealEstates.Services.csproj" />
+    <ProjectReference Include="..\..\3 - Domain\Challenge.RealEstates.Domain.Services\Challenge.RealEstates.Domain.Services.csproj" />
     <ProjectReference Include="..\..\4 - Infrastructure\Challenge.RealEstates.Infrastructure\Challenge.RealEstates.Infrastructure.csproj" />
     <ProjectReference Include="..\Challenge.RealEstates.Gateways\Challenge.RealEstates.Gateways.csproj" />
   </ItemGroup>

@@ -6,12 +6,12 @@ using Challenge.RealEstates.Gateways;
 using Challenge.RealEstates.Gateways.Interfaces;
 using Challenge.RealEstates.Domain.Core.Interfaces.Repositories;
 using Challenge.RealEstates.Domain.Core.Interfaces.Services;
-using Challenge.RealEstates.Services;
 using Challenge.RealEstates.Infrastructure.Data;
 using Challenge.RealEstates.Infrastructure.Data.Interfaces;
 using Challenge.RealEstates.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Challenge.RealEstates.Domain.Services;
 
 namespace Challenge.RealEstates.Api.Extensions
 {

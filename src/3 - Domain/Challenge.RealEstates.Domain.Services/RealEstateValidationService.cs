@@ -1,11 +1,11 @@
-﻿using Challenge.RealEstates.Services.Properties;
-using Challenge.RealEstates.Domain.Core.Interfaces.Services;
+﻿using Challenge.RealEstates.Domain.Core.Interfaces.Services;
 using Challenge.RealEstates.Domain.Constants;
 using Challenge.RealEstates.Domain.Entities;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
+using Challenge.RealEstates.Domain.Services.Properties;
 
-namespace Challenge.RealEstates.Services
+namespace Challenge.RealEstates.Domain.Services
 {
     public class RealEstateValidationService : IRealEstateValidationService
     {

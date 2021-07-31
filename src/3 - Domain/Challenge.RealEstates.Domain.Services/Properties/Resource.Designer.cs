@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Challenge.RealEstates.Services.Properties {
+namespace Challenge.RealEstates.Domain.Services.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Challenge.RealEstates.Services.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Challenge.RealEstates.Services.Properties.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Challenge.RealEstates.Domain.Services.Properties.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
