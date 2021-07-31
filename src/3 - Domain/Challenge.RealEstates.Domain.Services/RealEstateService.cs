@@ -65,7 +65,7 @@ namespace Challenge.RealEstates.Domain.Services
 
         public PagedResponse<RealEstate> GetAllPaged(PagedParams pagedParams, Filters filter)
         {
-            return _realEstateRepository.GetAllPaged(pagedParams, filter);
+            return filter?.Source == null ? new PagedResponse<RealEstate>() : _realEstateRepository.GetAllPaged(pagedParams, filter);
         }
     }
 }

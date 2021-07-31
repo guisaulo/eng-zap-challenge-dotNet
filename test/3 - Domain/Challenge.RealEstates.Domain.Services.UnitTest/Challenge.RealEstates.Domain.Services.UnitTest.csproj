@@ -22,11 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RealEstate\Faker\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\src\3 - Domain\Challenge.RealEstates.Domain.Services\Challenge.RealEstates.Domain.Services.csproj" />
+    <ProjectReference Include="..\..\..\src\3 - Domain\Challenge.RealEstates.Domain\Challenge.RealEstates.Domain.csproj" />
   </ItemGroup>
 
 </Project>

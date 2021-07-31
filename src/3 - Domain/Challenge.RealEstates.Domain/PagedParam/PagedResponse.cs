@@ -1,9 +1,8 @@
-﻿using Challenge.RealEstates.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Challenge.RealEstates.Domain.PagedParam
 {
-    public class PagedResponse<TDTO>
+    public class PagedResponse<T>
     {       
         public int PageNumber { get; set; }
 
@@ -11,6 +10,6 @@ namespace Challenge.RealEstates.Domain.PagedParam
 
         public long TotalCount { get; set; }
 
-        public IEnumerable<TDTO> Listings { get; set; }
+        public IEnumerable<T> Listings { get; set; }
     }
 }
