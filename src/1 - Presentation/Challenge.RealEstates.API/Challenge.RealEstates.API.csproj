@@ -14,7 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591</NoWarn>
     <WarningsAsErrors>;NU1605</WarningsAsErrors>
-    <DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
