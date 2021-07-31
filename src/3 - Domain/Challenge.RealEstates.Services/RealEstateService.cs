@@ -1,5 +1,5 @@
-﻿using Challenge.RealEstates.Core.Interfaces.Repositories;
-using Challenge.RealEstates.Core.Interfaces.Services;
+﻿using Challenge.RealEstates.Domain.Core.Interfaces.Repositories;
+using Challenge.RealEstates.Domain.Core.Interfaces.Services;
 using Challenge.RealEstates.Domain.Entities;
 using Challenge.RealEstates.Domain.Filter;
 using Challenge.RealEstates.Domain.PagedParam;

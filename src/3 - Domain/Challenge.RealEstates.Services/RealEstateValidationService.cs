@@ -1,5 +1,5 @@
 ﻿using Challenge.RealEstates.Services.Properties;
-using Challenge.RealEstates.Core.Interfaces.Services;
+using Challenge.RealEstates.Domain.Core.Interfaces.Services;
 using Challenge.RealEstates.Domain.Constants;
 using Challenge.RealEstates.Domain.Entities;
 using FluentValidation;

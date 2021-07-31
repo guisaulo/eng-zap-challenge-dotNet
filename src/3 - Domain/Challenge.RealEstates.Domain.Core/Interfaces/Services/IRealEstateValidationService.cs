@@ -1,6 +1,6 @@
 ﻿using Challenge.RealEstates.Domain.Entities;
 
-namespace Challenge.RealEstates.Core.Interfaces.Services
+namespace Challenge.RealEstates.Domain.Core.Interfaces.Services
 {
     public interface IRealEstateValidationService
     {

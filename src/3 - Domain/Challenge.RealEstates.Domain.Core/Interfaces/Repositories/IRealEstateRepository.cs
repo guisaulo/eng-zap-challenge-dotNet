@@ -2,7 +2,7 @@
 using Challenge.RealEstates.Domain.Filter;
 using Challenge.RealEstates.Domain.PagedParam;
 
-namespace Challenge.RealEstates.Core.Interfaces.Repositories
+namespace Challenge.RealEstates.Domain.Core.Interfaces.Repositories
 {
     public interface IRealEstateRepository
     {

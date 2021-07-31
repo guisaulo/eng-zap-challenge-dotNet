@@ -27,8 +27,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Infrastruture.UnitTest", "test\4 - Infrastructure\Challenge.RealEstates.Infrastruture.UnitTest\Challenge.RealEstates.Infrastruture.UnitTest.csproj", "{7E209278-CBC4-4961-8373-62AE6B14C40E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Core", "src\3 - Domain\Challenge.RealEstates.Core\Challenge.RealEstates.Core.csproj", "{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain", "src\3 - Domain\Challenge.RealEstates.Domain\Challenge.RealEstates.Domain.csproj", "{64A5D8E5-FA02-4058-BAA0-DB02ED72450A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Services", "src\3 - Domain\Challenge.RealEstates.Services\Challenge.RealEstates.Services.csproj", "{4FDD24A9-5BA0-45B1-9117-55C5375ADB4A}"
@@ -43,13 +41,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Gatew
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{3BF36E73-FBC2-45D3-A69E-40DFDFC1020B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Domain.Core.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.Core.UnitTest\Challenge.RealEstates.Domain.Core.UnitTest.csproj", "{B5AAF907-C075-4F03-A20B-2FE82BBE2305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain.Core.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.Core.UnitTest\Challenge.RealEstates.Domain.Core.UnitTest.csproj", "{B5AAF907-C075-4F03-A20B-2FE82BBE2305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Domain.Services.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.Services.UnitTest\Challenge.RealEstates.Domain.Services.UnitTest.csproj", "{A8D51044-CC2A-489B-8828-1E0ADCAFE922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain.Services.UnitTest", "test\3 - Domain\Challenge.RealEstates.Domain.Services.UnitTest\Challenge.RealEstates.Domain.Services.UnitTest.csproj", "{A8D51044-CC2A-489B-8828-1E0ADCAFE922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Api.UnitTest", "test\1 - Presentation\Challenge.RealEstates.Api.UnitTest\Challenge.RealEstates.Api.UnitTest.csproj", "{0BDD15B2-3946-41ED-AEE9-D27CDEFABC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Api.UnitTest", "test\1 - Presentation\Challenge.RealEstates.Api.UnitTest\Challenge.RealEstates.Api.UnitTest.csproj", "{0BDD15B2-3946-41ED-AEE9-D27CDEFABC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.RealEstates.Gateways.UnitTest", "test\1 - Presentation\Challenge.RealEstates.Gateways.UnitTest\Challenge.RealEstates.Gateways.UnitTest.csproj", "{BD5979BA-4CCC-4C6B-971D-744B7DFBC296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Gateways.UnitTest", "test\1 - Presentation\Challenge.RealEstates.Gateways.UnitTest\Challenge.RealEstates.Gateways.UnitTest.csproj", "{BD5979BA-4CCC-4C6B-971D-744B7DFBC296}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain.Core", "src\3 - Domain\Challenge.RealEstates.Domain.Core\Challenge.RealEstates.Domain.Core.csproj", "{94F06BE5-42A3-485F-96A6-446E67095AE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,18 +109,6 @@ Global
 		{7E209278-CBC4-4961-8373-62AE6B14C40E}.Release|x64.Build.0 = Release|Any CPU
 		{7E209278-CBC4-4961-8373-62AE6B14C40E}.Release|x86.ActiveCfg = Release|Any CPU
 		{7E209278-CBC4-4961-8373-62AE6B14C40E}.Release|x86.Build.0 = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|x64.Build.0 = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Debug|x86.Build.0 = Debug|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|x64.ActiveCfg = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|x64.Build.0 = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|x86.ActiveCfg = Release|Any CPU
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C}.Release|x86.Build.0 = Release|Any CPU
 		{64A5D8E5-FA02-4058-BAA0-DB02ED72450A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64A5D8E5-FA02-4058-BAA0-DB02ED72450A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64A5D8E5-FA02-4058-BAA0-DB02ED72450A}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -229,6 +217,18 @@ Global
 		{BD5979BA-4CCC-4C6B-971D-744B7DFBC296}.Release|x64.Build.0 = Release|Any CPU
 		{BD5979BA-4CCC-4C6B-971D-744B7DFBC296}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD5979BA-4CCC-4C6B-971D-744B7DFBC296}.Release|x86.Build.0 = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|x64.Build.0 = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Debug|x86.Build.0 = Debug|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|x64.ActiveCfg = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|x64.Build.0 = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{94F06BE5-42A3-485F-96A6-446E67095AE7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -244,7 +244,6 @@ Global
 		{2552D277-F43C-4590-B212-04BF20C074B4} = {BA0B8B7B-372C-47F1-9EC6-EBA1C40DDB8C}
 		{CBB37DF4-8E86-4F3C-AB2A-B35ADB0F97EB} = {69D64C9F-87F7-4703-991D-0844C24894DA}
 		{7E209278-CBC4-4961-8373-62AE6B14C40E} = {7EFE8BBF-888A-4E57-AAAF-7CA874095E05}
-		{4AD63CF1-6667-4C58-B7E6-3F30BA39CE4C} = {7645FE32-F5DF-4417-9F84-A04F6AB70192}
 		{64A5D8E5-FA02-4058-BAA0-DB02ED72450A} = {7645FE32-F5DF-4417-9F84-A04F6AB70192}
 		{4FDD24A9-5BA0-45B1-9117-55C5375ADB4A} = {7645FE32-F5DF-4417-9F84-A04F6AB70192}
 		{F40C3B47-4127-4B3B-A36B-DF73EE759CA8} = {01302CCF-BDAC-42C6-9A24-8A07C01C4AAA}
@@ -256,6 +255,7 @@ Global
 		{A8D51044-CC2A-489B-8828-1E0ADCAFE922} = {69D64C9F-87F7-4703-991D-0844C24894DA}
 		{0BDD15B2-3946-41ED-AEE9-D27CDEFABC8F} = {3BF36E73-FBC2-45D3-A69E-40DFDFC1020B}
 		{BD5979BA-4CCC-4C6B-971D-744B7DFBC296} = {3BF36E73-FBC2-45D3-A69E-40DFDFC1020B}
+		{94F06BE5-42A3-485F-96A6-446E67095AE7} = {7645FE32-F5DF-4417-9F84-A04F6AB70192}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F1F5469-048D-476C-AE9E-91C1A96B756C}

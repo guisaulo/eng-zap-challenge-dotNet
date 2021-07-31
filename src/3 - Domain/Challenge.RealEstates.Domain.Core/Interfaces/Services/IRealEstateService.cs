@@ -4,7 +4,7 @@ using Challenge.RealEstates.Domain.PagedParam;
 using System.Collections.Generic;
 using Challenge.RealEstates.Domain.DomainResponse;
 
-namespace Challenge.RealEstates.Core.Interfaces.Services
+namespace Challenge.RealEstates.Domain.Core.Interfaces.Services
 {
     public interface IRealEstateService {
         AddRangeResponse AddRange(IEnumerable<RealEstate> realEstates);
