@@ -1,13 +1,12 @@
-﻿using Challenge.RealEstates.Application.DTOs;
+﻿using Challenge.RealEstates.Api.Properties;
+using Challenge.RealEstates.Application.Command;
+using Challenge.RealEstates.Application.DTOs;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
 using Challenge.RealEstates.Gateways.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Challenge.RealEstates.Api.Properties;
-using Challenge.RealEstates.Application.Command;
 
 namespace Challenge.RealEstates.Api.Controllers
 {

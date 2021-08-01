@@ -86,7 +86,9 @@ namespace Challenge.RealEstates.Infrastructure.Repositories
 
         public HashSet<string> GetFilter(string filterName, string filterValue)
         {
-            var filter = _dataInMemory.Filters[filterName];
+            var filter = new Dictionary<string, HashSet<string>>();
+            if (_dataInMemory.Filters.ContainsKey(filterName))
+                filter = _dataInMemory.Filters[filterName];
             
             var ids = new HashSet<string>();
 
