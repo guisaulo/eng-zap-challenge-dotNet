@@ -7,8 +7,8 @@ Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dad
 ## Decisões técnicas
 
 - API foi implementada com o .NET 5;
-- API REST com arquitetura em camadas baseada nos princípios do DDD e testes unitários;
-- Foi utilizada o Swagger - OpenApi para documentação e interface prática dos endpoints;
+- API REST com arquitetura em camadas baseada nos princípios DDD e testes unitários;
+- Foi utilizada o Swagger - OpenApi para documentação e facilitar validação da API;
 - Outra tecnologias: Serilog, AutoMapper, FluentValidation, FluentAssertion, Moq, xUnit, Docker, Heroku, etc.
 - Trello para planejamento das atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
 
