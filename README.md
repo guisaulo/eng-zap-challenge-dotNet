@@ -1,10 +1,53 @@
 # Code Challenge Grupo ZAP
 
-Kanban: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
+O seguinte projeto faz parte do processo seletivo da OLX/Zap+. 
+Opção escolhida: Opção B: Fazer uma API (backend) - O projeto consiste em uma API REST, onde dada a origem do portal em uma request (Zap | Viva Real) o seu response será a listagem dos imóveis.
 
 ## Decisões técnicas
-## EndPoints
+
+- API foi implementada com o .NET 5;
+- API REST com arquitetura em camadas baseada nos princípios do DDD e testes unitários;
+- Foi utilizada o Swagger - OpenApi para documentação e interface prática dos endpoints;
+- Outra tecnologias: Serilog, AutoMapper, FluentValidation, FluentAssertion, Moq, xUnit, Docker, Heroku, etc.
+- Trello para planejamento das atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
+
 ## Arquitetura
+
+## Endpoints da API
+
+#### 1 - Carga de imóveis em memória
+- Carrega os imóveis na memória da aplicação a partir de uma url com o arquivo de source aplicando as regras de negócio para imóveis elegíveis:
+```
+POST /realestates/load
+```
+- É necessário executar esse comando primeiro informando o endereço do source no corpo da requisição:
+```
+POST /realestates/load
+{
+   "url": "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json"
+}
+```
+- Retorna status 200, data de carregamento e lista de imóveis válidos ou inválidos salvos em mémória para os portais Zap e VivaReal.
+
+#### 2 - Listagem de imóveis
+- Dada a origem do portal em uma request o seu response será a listagem dos imóveis:
+```
+GET /realestates/{source}
+```
+- Exemplo:
+```
+GET /realestates/vivareal
+```
+- Foram implementados os seguintes filtros e paginação, pensando que a API pode ser consumida por vários tipos de clientes e com diferentes propósitos:
+```
+PagedParams (opcional): PageNumber (default 1), PageSize (default 10)
+Filtros (opcional): City, BusinessType, Bathrooms, Bedrooms e ParkingSpaces
+```
+- Exemplo de parâmetros:
+```
+GET /realestates/zap?PageNumber=1&PageSize=10&City=São Paulo&Bathrooms=1&Bedrooms=2&ParkingSpaces=1
+```
+- Retorna status 200, lista de imóveis do portal correspondente, metadados de paginação e totais.
 ## Pontos de melhoria
 
 ## Instruções
