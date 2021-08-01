@@ -49,9 +49,6 @@ namespace Challenge.RealEstates.Api.Controllers
         public ActionResult<PagedParamsDto<RealEstateDTO>> GetBySource(string source, [FromQuery] RealEstatesSearchDto search)
         {
             var result = _realEstateApplicationService.GetAllPaged(source, search);
-            if (!result.Listings.Any())
-                return NotFound();
-            
             return Ok(result);
         }
 
