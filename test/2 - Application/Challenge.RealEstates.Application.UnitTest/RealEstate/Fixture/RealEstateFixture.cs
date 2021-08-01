@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
-using Challenge.RealEstates.Domain.Core.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Challenge.RealEstates.Application.Mappers;
+using Challenge.RealEstates.Domain.Core.Interfaces.Services;
 using Challenge.RealEstates.Domain.DomainResponse;
 using Challenge.RealEstates.Domain.Filter;
 using Challenge.RealEstates.Domain.PagedParam;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Challenge.RealEstates.Application.UnitTest.RealEstate.Fixture
 {
@@ -29,10 +26,10 @@ namespace Challenge.RealEstates.Application.UnitTest.RealEstate.Fixture
 
             mock.Setup(m => m.AddRange(It.IsAny<IEnumerable<Domain.Entities.RealEstate>>()))
                 .Returns(new AddRangeResponse());
-            return mock.Object;
 
             mock.Setup(m => m.GetAllPaged(It.IsAny<PagedParams>(), It.IsAny<Filters>()))
                 .Returns((PagedParams p, Filters f) => GetRealEstates(p, f));
+
             return mock.Object;
 
             throw new NotImplementedException();
