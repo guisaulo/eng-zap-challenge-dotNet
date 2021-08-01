@@ -54,6 +54,11 @@ Filters
 ```
 ## Arquitetura
 
+Foi criada uma arquitetura com quatro camadas utilizando conceitos de Clean Architecture e DDD:
+  - 1 - **Presentation (Apresentação)**: Camada de entrada da aplicação. Possui a implementação das controllers para efetuar as chamadas na API e gateway para baixar o arquivo source de imóveis;
+  - 2 - **Application (Aplicação)**: Camada que coordena a execução das tarefas vindo das controllers para os objetos de dominio. Armazena os DTOs e Mappers da solução para transferência de dados entre a camada de dominio e de apresentação;
+  - 3 - **Domain (Domínio)**: Camada independente, com as entidades, contratos (interfaces de repositório e serviços) e serviços de domínio da aplicação (regras de negócio);
+  - 4 - **Infrastructure** (Infraestrutura): Possui a implementação do padrão repositório que realiza a manipulação dos dados em memória.
 ## Endpoints da API
 
 #### 1 - Carga de imóveis em memória
