@@ -31,8 +31,6 @@ namespace Challenge.RealEstates.Application.UnitTest.RealEstate.Fixture
                 .Returns((PagedParams p, Filters f) => GetRealEstates(p, f));
 
             return mock.Object;
-
-            throw new NotImplementedException();
         }
 
         private static PagedResponse<Domain.Entities.RealEstate> GetRealEstates(PagedParams pagedParams, Filters filters)
