@@ -7,6 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{50D4E3F9-60E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D39785BB-FA8B-4588-9F2D-9A8621F5923D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{FA88BD07-8A55-4053-AA94-28C4B3E367DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Api", "src\1 - Presentation\Challenge.RealEstates.Api\Challenge.RealEstates.Api.csproj", "{1A6CC5E5-42B1-4D01-9CE9-98EBD0B4202A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Gateways", "src\1 - Presentation\Challenge.RealEstates.Gateways\Challenge.RealEstates.Gateways.csproj", "{12A9426A-263D-466A-9F0B-FBC5BEE84A43}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{B39BE368-466E-4B75-8ED9-F544C08AEBC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Application", "src\2 - Application\Challenge.RealEstates.Application\Challenge.RealEstates.Application.csproj", "{2285E897-1E0B-45C4-AF40-78C8C8B431B3}"
@@ -28,12 +34,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Domain", "src\3 - Domain\Challenge.RealEstates.Domain\Challenge.RealEstates.Domain.csproj", "{64A5D8E5-FA02-4058-BAA0-DB02ED72450A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Infrastructure", "src\4 - Infrastructure\Challenge.RealEstates.Infrastructure\Challenge.RealEstates.Infrastructure.csproj", "{F40C3B47-4127-4B3B-A36B-DF73EE759CA8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{FA88BD07-8A55-4053-AA94-28C4B3E367DE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Api", "src\1 - Presentation\Challenge.RealEstates.Api\Challenge.RealEstates.Api.csproj", "{1A6CC5E5-42B1-4D01-9CE9-98EBD0B4202A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.RealEstates.Gateways", "src\1 - Presentation\Challenge.RealEstates.Gateways\Challenge.RealEstates.Gateways.csproj", "{12A9426A-263D-466A-9F0B-FBC5BEE84A43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{3BF36E73-FBC2-45D3-A69E-40DFDFC1020B}"
 EndProject
