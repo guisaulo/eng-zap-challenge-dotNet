@@ -12,6 +12,46 @@ Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dad
 - Outra tecnologias: Serilog, AutoMapper, FluentValidation, FluentAssertion, Moq, xUnit, Docker, Heroku, etc.
 - Trello para planejamento das atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
 
+#### Dados em memória
+
+A estrutura de dados para manipulação dos dados em memória possui a seguinte composição:
+
+- Hashtable Data: Salva os ids dos imóveis (chave) e seus objetos (valor). Exemplo:
+```
+Data 
+[ 
+    <"123", (Id="123", UsableAreas="69", ..)>, 
+    <"456", (Id="456", UsableAreas="49", ..)>,
+    ..
+]
+```
+- HashSet<string>  ZapIds: Salva o conjunto de ids elegíveis do portal Zap. Exemplo:
+```
+ZapIds ["123", "456", ..]
+```
+- HashSet<string>  VivaRealIds: Salva o conjunto de ids elegíveis do portal Viva Real. Exemplo:
+```
+VivaRealIds ["789", "101", ..]
+```
+- Dictionary<string, Dictionary<string, HashSet<string>>> Filters: Estrutura para auxiliar a manipulação de filtros de imóveis em memória. Exemplo:
+```
+Filters 
+[
+    "BusinessType":
+    [
+        "SALE": ["123","456",..],
+        "RENTAL": ["789","101",..],
+        ..
+    ],
+    "Badrooms";
+    [
+        "2": ["123","456"],
+        "3": ["789","101",..],
+        ..
+    ],
+    ..
+]
+```
 ## Arquitetura
 
 ## Endpoints da API
@@ -49,6 +89,7 @@ Filtros (opcional): City, BusinessType, Bathrooms, Bedrooms e ParkingSpaces
 GET /realestates/zap?PageNumber=1&PageSize=10&City=São Paulo&Bathrooms=1&Bedrooms=2&ParkingSpaces=1
 ```
 - Retorna status 200, lista de imóveis do portal correspondente, metadados de paginação e totais.
+
 ## Pontos de melhoria
 
 ## Instruções
