@@ -7,7 +7,7 @@ namespace Challenge.RealEstates.Domain.Validators
     {
         public PricingInfosValidator()
         {
-            RuleFor(m => m.BusinessType).NotEmpty().NotNull();
+            RuleFor(m => m.BusinessType).NotNull().NotEmpty();
             RuleFor(m => m.Price)
                 .NotNull()
                 .Custom((x, context) =>
