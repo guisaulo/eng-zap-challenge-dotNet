@@ -41,7 +41,7 @@ GET /realestates/vivareal
 ```
 - Foram implementados os seguintes filtros e paginação, pensando que a API pode ser consumida por vários tipos de clientes e com diferentes propósitos:
 ```
-PagedParams (opcional): PageNumber (default 1), PageSize (default 10)
+Paginação (opcional): PageNumber (default 1), PageSize (default 10)
 Filtros (opcional): City, BusinessType, Bathrooms, Bedrooms e ParkingSpaces
 ```
 - Exemplo de parâmetros:
