@@ -11,7 +11,10 @@ Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dad
 - Foi utilizada o Swagger - OpenApi para documentação e facilitar validação da API;
 - Outra tecnologias: Serilog, AutoMapper, FluentValidation, FluentAssertion, Moq, xUnit, Docker, Heroku, etc.
 - Trello para planejamento das atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
-- Dados em memória: A estrutura de dados para manipulação dos dados em memória possui a seguinte composição:
+
+## Dados em memória 
+
+A estrutura de dados para manipulação dos dados em memória possui a seguinte composição:
 
 - Hashtable Data: Salva os ids dos imóveis (chave) e seus objetos (valor). Exemplo:
 ```
