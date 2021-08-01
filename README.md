@@ -70,7 +70,7 @@ POST /realestates/load
 ```
 POST /realestates/load
 {
-   "url": "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json"
+   "url": "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-2.json"
 }
 ```
 - Retorna status 200, data de carregamento e lista de imóveis válidos ou inválidos salvos em mémória para os portais Zap e VivaReal.
