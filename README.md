@@ -2,7 +2,7 @@
 
 O seguinte projeto faz parte do processo seletivo da OLX/Zap+. 
 
--Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dada a origem do portal em uma request (Zap | Viva Real) o seu response será a listagem dos imóveis.
+Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dada a origem do portal em uma request (Zap | Viva Real) o seu response será a listagem dos imóveis.
 
 ## Decisões técnicas
 
