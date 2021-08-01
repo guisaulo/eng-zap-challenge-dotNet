@@ -2,15 +2,24 @@
 
 O seguinte projeto faz parte do processo seletivo da OLX/Zap+. 
 
-Opção B: Fazer uma API (backend): O projeto consiste em uma API REST, onde dada a origem do portal em uma request (Zap | Viva Real) o seu response será a listagem dos imóveis.
+Opção B: Fazer uma API (backend): O projeto consiste em uma API, onde dada a origem do portal em uma request (Zap | Viva Real) o seu response será a listagem dos imóveis.
 
 ## Decisões técnicas
 
-- API foi implementada com o .NET 5;
-- API REST com arquitetura em camadas baseada nos princípios DDD e testes unitários;
-- Foi utilizada o Swagger - OpenApi para documentação e facilitar validação da API;
-- Outra tecnologias: Serilog, AutoMapper, FluentValidation, FluentAssertion, Moq, xUnit, Docker, Heroku, etc.
-- Trello para planejamento das atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge
+- Consiste em uma API REST implementada em .NET 5;
+- Arquitetura em camadas baseada no conceitos de Clean Architecture e DDD;
+- Swagger OpenApi para documentar e facilitar validação da API;
+- Camada de testes unitários com xUnit, Moq e FluentAssertion;
+- Outra tecnologias: Serilog, AutoMapper, FluentValidation, Docker, Heroku, etc.
+- Kanban do planejamento das minhas atividades: https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge.
+
+## Arquitetura
+
+Foi criada uma arquitetura com quatro camadas utilizando conceitos de Clean Architecture e DDD:
+  - 1 - **Presentation (Apresentação)**: Camada de entrada da aplicação. Possui a implementação das controllers para efetuar as chamadas na API e gateway para baixar o arquivo source de imóveis;
+  - 2 - **Application (Aplicação)**: Camada que coordena a execução das tarefas vindo das controllers para os objetos de dominio. Armazena os DTOs e Mappers da solução para transferência de dados entre a camada de domínio e de apresentação;
+  - 3 - **Domain (Domínio)**: Camada independente, com as entidades, contratos (interfaces de repositório e serviços) e serviços de domínio da aplicação (regras de negócio);
+  - 4 - **Infrastructure (Infraestrutura)** : Possui a implementação do padrão repositório que realiza a "persistência" e manipulação dos dados em memória.
 
 ## Dados em memória 
 
@@ -51,22 +60,16 @@ Filters
     ],
     ..
 ]
-```
-## Arquitetura
-
-Foi criada uma arquitetura com quatro camadas utilizando conceitos de Clean Architecture e DDD:
-  - 1 - **Presentation (Apresentação)**: Camada de entrada da aplicação. Possui a implementação das controllers para efetuar as chamadas na API e gateway para baixar o arquivo source de imóveis;
-  - 2 - **Application (Aplicação)**: Camada que coordena a execução das tarefas vindo das controllers para os objetos de dominio. Armazena os DTOs e Mappers da solução para transferência de dados entre a camada de dominio e de apresentação;
-  - 3 - **Domain (Domínio)**: Camada independente, com as entidades, contratos (interfaces de repositório e serviços) e serviços de domínio da aplicação (regras de negócio);
-  - 4 - **Infrastructure** (Infraestrutura): Possui a implementação do padrão repositório que realiza a manipulação dos dados em memória.
-## Endpoints da API
-
+```  
+  
+## Endpoints 
+Segue os dois endpoints principais da API. Qualquer dúvida consultar o swagger:
 #### 1 - Carga de imóveis em memória
 - Carrega os imóveis na memória da aplicação a partir de uma url com o arquivo de source aplicando as regras de negócio para imóveis elegíveis:
 ```
 POST /realestates/load
 ```
-- É necessário executar esse comando primeiro informando o endereço do source no corpo da requisição:
+- É necessário executar esse comando primeiro informando o endereço do source no corpo da requisição (cerca de 2 minutos pra carregar 10.000 imóveis):
 ```
 POST /realestates/load
 {
@@ -107,7 +110,7 @@ A aplicação foi desenvolvida no Visual Studio 2019. Porém, é possível inter
 
 - Executar aplicação:
 ```
-dotnet run --project "./src/1 - Presentation/Challenge.RealEstates.API/Challenge.RealEstates.API.csproj"
+dotnet run --project "./src/1 - Presentation/Challenge.RealEstates.Api/Challenge.RealEstates.Api.csproj"
 
 https://localhost:5001/swagger/index.html
 ```
@@ -117,11 +120,11 @@ dotnet test
 ```
 - Publicar projeto:
 ```
-dotnet publish "./src/1 - Presentation/Challenge.RealEstates.API/Challenge.RealEstates.API.csproj" -c Release -o "<diretório>"
+dotnet publish "./src/1 - Presentation/Challenge.RealEstates.Api/Challenge.RealEstates.Api.csproj" -c Release -o "<diretório>"
 ```
 - Executar aplicação publicada:
 ```
-dotnet Challenge.RealEstates.API.dll
+dotnet Challenge.RealEstates.Api.dll
 
 https://localhost:5001/swagger/index.html
 ```
