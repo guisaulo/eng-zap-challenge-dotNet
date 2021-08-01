@@ -1,21 +1,14 @@
 ﻿using Challenge.RealEstates.Api.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Challenge.RealEstates.Application.Command;
 using Challenge.RealEstates.Application.DTOs;
 using Challenge.RealEstates.Application.DTOs.Response;
 using Challenge.RealEstates.Application.Interfaces;
-using Challenge.RealEstates.Domain.DomainResponse;
 using Challenge.RealEstates.Domain.Entities;
-using Challenge.RealEstates.Domain.Filter;
-using Challenge.RealEstates.Domain.PagedParam;
-using Microsoft.AspNetCore.Mvc;
-using Xunit;
-using Moq;
 using Challenge.RealEstates.Gateways.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using System.Collections.Generic;
+using Xunit;
 
 namespace Challenge.RealEstates.Api.UnitTest.Controller
 {
