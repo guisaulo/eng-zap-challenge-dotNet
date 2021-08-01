@@ -95,8 +95,6 @@ GET /realestates/zap?PageNumber=1&PageSize=10&City=São Paulo&Bathrooms=1&Bedroo
 ```
 - Retorna status 200, lista de imóveis do portal correspondente, metadados de paginação e totais.
 
-## Pontos de melhoria
-
 ## Instruções
 Segue abaixo tutorial para rodar a aplicação localmente ou em conteiner Docker.
 
