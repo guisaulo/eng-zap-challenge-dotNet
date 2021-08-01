@@ -11,9 +11,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Faker
             {
                 GetRealEstate("58815", "Belo Horizonte", "SALE", 2, 3, 1),
                 GetRealEstate("58817", "Belo Horizonte", "SALE", 3, 3, 1),
-                GetRealEstate("58818", "Belo Horizonte", "RENT", 3, 3, 1),
+                GetRealEstate("58818", "Belo Horizonte", "RENTAL", 3, 3, 1),
                 GetRealEstate("58818", "Contagem", "SALE", 2, 3, 1),
-                GetRealEstate("58818", "Contagem", "RENT", 2, 2, 0),
+                GetRealEstate("58818", "Contagem", "RENTAL", 2, 2, 0),
             }.AsQueryable();
 
 
@@ -22,9 +22,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Faker
             {
                 GetRealEstate("68815", "Belo Horizonte", "SALE", 2, 3, 1),
                 GetRealEstate("68817", "Belo Horizonte", "SALE", 3, 3, 1),
-                GetRealEstate("68818", "Belo Horizonte", "RENT", 3, 3, 1),
+                GetRealEstate("68818", "Belo Horizonte", "RENTAL", 3, 3, 1),
                 GetRealEstate("68818", "Contagem", "SALE", 2, 3, 1),
-                GetRealEstate("68818", "Contagem", "RENT", 2, 2, 0),
+                GetRealEstate("68818", "Contagem", "RENTAL", 2, 2, 0),
             }.AsQueryable();
 
         private static Entities.RealEstate GetRealEstate(string id, string city, string businessType, int bathrooms, int bedrooms, int parkingSpaces) =>

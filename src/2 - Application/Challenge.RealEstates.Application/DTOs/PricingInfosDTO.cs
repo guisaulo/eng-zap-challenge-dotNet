@@ -7,5 +7,6 @@
         public string RentalTotalPrice { get; set; }
         public string MonthlyCondoFee { get; set; }
         public string YearlyIptu { get; set; }
+        public string Period { get; set; }
     }
 }

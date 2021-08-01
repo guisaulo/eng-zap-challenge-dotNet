@@ -40,9 +40,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate
         }
 
         [Fact]
-        public void Should_Return_Valid_Response_to_Zap_and_VivaReal_When_Add_RealEstate_to_Rent_With_Valid_Input()
+        public void Should_Return_Valid_Response_to_Zap_and_VivaReal_When_Add_RealEstate_to_Rental_With_Valid_Input()
         {
-            var realEstate = RealEstateFixture.GetValidRealEstateToRent("X123");
+            var realEstate = RealEstateFixture.GetValidRealEstateToRental("X123");
             var result = _realEstateService.AddRange(new List<Entities.RealEstate>() { realEstate });
             result.Should().NotBeNull();
             Assert.True(result.Input.ValidIds.Count.Equals(1));
@@ -69,9 +69,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate
 
         #region Zap portal exclusive business rules
         [Fact]
-        public void Should_Return_Invalid_ZapResponse_When_Add_RealEstate_to_Rent_With_RentalPrice_Smaller_than_allowed()
+        public void Should_Return_Invalid_ZapResponse_When_Add_RealEstate_to_Rental_With_RentalPrice_Smaller_than_allowed()
         {
-            var realEstate = RealEstateFixture.GetValidRealEstateToRent("X123", rentalTotalPrice: 1500);
+            var realEstate = RealEstateFixture.GetValidRealEstateToRental("X123", rentalTotalPrice: 1500);
             var result = _realEstateService.AddRange(new List<Entities.RealEstate>() { realEstate });
             result.Should().NotBeNull();
             Assert.True(result.Input.ValidIds.Count.Equals(1));
@@ -115,9 +115,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate
         #region VivaReal portal exclusive business rules
 
         [Fact]
-        public void Should_Return_Invalid_VivaRealResponse_When_Add_RealEstate_to_Rent_With_MonthlyCondoFee_Invalid()
+        public void Should_Return_Invalid_VivaRealResponse_When_Add_RealEstate_to_Rental_With_MonthlyCondoFee_Invalid()
         {
-            var realEstate = RealEstateFixture.GetValidRealEstateToRent(id: "X123", monthlyCondoFee: 2500);
+            var realEstate = RealEstateFixture.GetValidRealEstateToRental(id: "X123", monthlyCondoFee: 2500);
             var result = _realEstateService.AddRange(new List<Entities.RealEstate>() { realEstate });
             result.Should().NotBeNull();
             Assert.True(result.Input.ValidIds.Count.Equals(1));
@@ -129,9 +129,9 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate
         }
 
         [Fact]
-        public void Should_Return_Invalid_VivaRealResponse_When_Add_RealEstate_to_Rent_With_RentalPrice_Bigger_than_allowed_and_within_BoundingBox()
+        public void Should_Return_Invalid_VivaRealResponse_When_Add_RealEstate_to_Rental_With_RentalPrice_Bigger_than_allowed_and_within_BoundingBox()
         {
-            var realEstate = RealEstateFixture.GetValidRealEstateToRent(id: "X123", rentalTotalPrice: 7000, lat: -23.550000, lon: -46.650000);
+            var realEstate = RealEstateFixture.GetValidRealEstateToRental(id: "X123", rentalTotalPrice: 7000, lat: -23.550000, lon: -46.650000);
             var result = _realEstateService.AddRange(new List<Entities.RealEstate>() { realEstate });
             result.Should().NotBeNull();
             Assert.True(result.Input.ValidIds.Count.Equals(1));

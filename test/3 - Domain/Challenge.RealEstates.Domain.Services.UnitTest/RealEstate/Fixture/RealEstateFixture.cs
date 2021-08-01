@@ -96,7 +96,7 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Fixture
             return mock.Object;
         }
 
-        public static Entities.RealEstate GetValidRealEstateToSale(string id, double lon = -46.716542, double lat = -23.502555, int usableAreas = 4000, long price = 650000) =>
+        public static Entities.RealEstate GetValidRealEstateToSale(string id, double lon = -46.716542, double lat = -23.502555, int usableAreas = 102, long price = 650000) =>
             new()
             {
                 UsableAreas = usableAreas,
@@ -134,7 +134,7 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Fixture
                 }
             };
 
-        public static Entities.RealEstate GetValidRealEstateToRent(string id, double lon = -46.716542, double lat = -23.502555, long monthlyCondoFee = 300, long rentalTotalPrice = 3700) =>
+        public static Entities.RealEstate GetValidRealEstateToRental(string id, double lon = -46.716542, double lat = -23.502555, long monthlyCondoFee = 300, long rentalTotalPrice = 3700) =>
             new()
             {
                 UsableAreas = 4000,
@@ -167,7 +167,7 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Fixture
                     YearlyIptu = 500,
                     Price = 0,
                     RentalTotalPrice = rentalTotalPrice,
-                    BusinessType = "RENT",
+                    BusinessType = "RENTAL",
                     MonthlyCondoFee = monthlyCondoFee
                 }
             };
@@ -188,16 +188,16 @@ namespace Challenge.RealEstates.Domain.Services.UnitTest.RealEstate.Fixture
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", Bedrooms = "3" }, 4},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", Bathrooms = "2" }, 3},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", ParkingSpaces = "1" }, 4},
-                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", BusinessType = "RENT"}, 2},
-                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", City = "Contagem", BusinessType = "RENT", Bathrooms = "2", Bedrooms = "2", ParkingSpaces = "0"}, 1},
+                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", BusinessType = "RENTAL"}, 2},
+                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "ZAP", City = "Contagem", BusinessType = "RENTAL", Bathrooms = "2", Bedrooms = "2", ParkingSpaces = "0"}, 1},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL" }, 5 },
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", City = "São Paulo"}, 0},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", City = "Belo Horizonte"}, 3},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", Bedrooms = "3" }, 4},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", Bathrooms = "2" }, 3},
                 new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", ParkingSpaces = "1" }, 4},
-                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", BusinessType = "RENT"}, 2},
-                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", City = "Contagem", BusinessType = "RENT", Bathrooms = "2", Bedrooms = "2", ParkingSpaces = "0"}, 1},
+                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", BusinessType = "RENTAL"}, 2},
+                new object[] { new PagedParams(){ PageNumber = 1, PageSize = 10 }, new Filters() { Source = "VIVAREAL", City = "Contagem", BusinessType = "RENTAL", Bathrooms = "2", Bedrooms = "2", ParkingSpaces = "0"}, 1},
             };
     }
 }

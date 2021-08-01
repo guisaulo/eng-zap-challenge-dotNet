@@ -35,7 +35,7 @@ namespace Challenge.RealEstates.Domain.Services
             return realEstate.PricingInfos.BusinessType switch
             {
                 "SALE" => IsEligibleSaleToZapPortal(realEstate),
-                "RENT" => IsEligibleRentToZapPortal(realEstate),
+                "RENTAL" => IsEligibleRentalToZapPortal(realEstate),
                 _ => false
             };
         }
@@ -45,7 +45,7 @@ namespace Challenge.RealEstates.Domain.Services
             return realEstate.PricingInfos.BusinessType switch
             {
                 "SALE" => IsEligibleSaleToVivaRealPortal(realEstate),
-                "RENT" => IsEligibleRentToVivaRealPortal(realEstate),
+                "RENTAL" => IsEligibleRentalToVivaRealPortal(realEstate),
                 _ => false
             };
         }
@@ -56,13 +56,14 @@ namespace Challenge.RealEstates.Domain.Services
                 ? BusinessConstants.MinValueSaleZap * ((100.0 - BusinessConstants.PercentageBoundingBoxMinValueSaleZap) / 100.0)
                 : BusinessConstants.MinValueSaleZap;
 
-            return realEstate.UsableAreas is > 0 and > BusinessConstants.MinValueUsableAreaSaleZap 
+            return realEstate.UsableAreas is > 0 
+                   && (realEstate.PricingInfos.Price / realEstate.UsableAreas) > BusinessConstants.MinValueUsableAreaSaleZap 
                    && realEstate.PricingInfos.Price >= minValueSaleZap;
         }
 
-        private static bool IsEligibleRentToZapPortal(RealEstate realEstate)
+        private static bool IsEligibleRentalToZapPortal(RealEstate realEstate)
         {
-            return realEstate.PricingInfos.RentalTotalPrice >= BusinessConstants.MinValueRentZap;
+            return realEstate.PricingInfos.RentalTotalPrice >= BusinessConstants.MinValueRentalZap;
         }
 
         private static bool IsEligibleSaleToVivaRealPortal(RealEstate realEstate)
@@ -70,18 +71,18 @@ namespace Challenge.RealEstates.Domain.Services
             return realEstate.PricingInfos.Price <= BusinessConstants.MaxValueSaleVivaReal;
         }
 
-        private static bool IsEligibleRentToVivaRealPortal(RealEstate realEstate)
+        private static bool IsEligibleRentalToVivaRealPortal(RealEstate realEstate)
         {
-            var maxValueRentVivaReal = IsWithinTheZapGroupBoundingBox(realEstate)
-                ? BusinessConstants.MaxValueRentVivaReal * ((100.0 + BusinessConstants.PercentageBoundingBoxMaxValueVivaReal) / 100.0)
-                : BusinessConstants.MaxValueRentVivaReal;
+            var maxValueRentalVivaReal = IsWithinTheZapGroupBoundingBox(realEstate)
+                ? BusinessConstants.MaxValueRentalVivaReal * ((100.0 + BusinessConstants.PercentageBoundingBoxMaxValueVivaReal) / 100.0)
+                : BusinessConstants.MaxValueRentalVivaReal;
 
-            var rentPercentage = realEstate.PricingInfos.RentalTotalPrice * BusinessConstants.PercentageRentPriceVivaReal / 100.0;
+            var rentPercentage = realEstate.PricingInfos.RentalTotalPrice * BusinessConstants.PercentageRentalPriceVivaReal / 100.0;
 
 
             return realEstate.PricingInfos.MonthlyCondoFee > 0
                    && realEstate.PricingInfos.MonthlyCondoFee < rentPercentage
-                   && realEstate.PricingInfos.RentalTotalPrice <= maxValueRentVivaReal;
+                   && realEstate.PricingInfos.RentalTotalPrice <= maxValueRentalVivaReal;
         }
 
         private static bool IsWithinTheZapGroupBoundingBox(RealEstate realEstate)
