@@ -11,7 +11,6 @@ Opção B: Fazer uma API (backend): O projeto consiste em uma API, onde dada a o
 - Swagger OpenApi para documentar e facilitar validação da API;
 - Camada de testes unitários com xUnit, Moq e FluentAssertion;
 - Outra tecnologias: Serilog, AutoMapper, FluentValidation, Docker, Heroku, etc.
-- Kanban do planejamento das minhas atividades: [Trello](https://trello.com/b/W33srlBq/desafio-olx-eng-zap-challenge)
 
 ## Arquitetura
 
